@@ -14,7 +14,6 @@
                     <tr>
                         <td align="center" style="padding: 20px;">
                             <img src="{{ asset('assets/frontend/media/images/logo.png') }}" alt="Vesper Look" width="120" style="margin-bottom: 10px;">
-                            <h2 style="margin: 0; color: #1f2937;">Vesper Look</h2>
                         </td>
                     </tr>
                     <tr>
