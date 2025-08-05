@@ -229,8 +229,15 @@
                             </label>
                         </div>
 
-                        <a href="#" wire:click.prevent="proceedToCheckout">
-                            Place Order
+                        <a href="#" wire:click.prevent="proceedToCheckout" wire:loading.attr="disabled" wire:target="proceedToCheckout"
+                            class="">
+                            <span wire:loading.remove wire:target="proceedToCheckout">
+                                Place Order
+                            </span>
+                            <span wire:loading wire:target="proceedToCheckout">
+                                Processing...
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            </span>
                         </a>
 
                     </div>
