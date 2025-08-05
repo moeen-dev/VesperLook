@@ -42,7 +42,13 @@
                                             <td>{{ $discount->code }}</td>
                                             <td>{{ $discount->min_order_amount }}</td>
                                             <td>{{ $discount->discount_percent }}</td>
-                                            <td>{{ $discount->expires_at }}</td>
+                                            <td>
+                                                @if (\Carbon\Carbon::parse($discount->expires_at)->isPast())
+                                                <span class="badge badge-danger">Expired ❌</span>
+                                                @else
+                                                <span class="badge badge-success">Valid ✔️</span>
+                                                @endif
+                                            </td>
                                             <td class="d-flex justify-content-center align-items-center" style="gap: 10px;">
                                                 <form action="{{ route('coupon.destroy', $discount->id) }}" method="POST">
                                                     @csrf
