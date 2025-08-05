@@ -163,8 +163,8 @@
 <body>
     <header class="clearfix">
         <div id="logo">
-            <!-- <img src="{{ url('assets/frontend/media/images/logo.png') }}"> -->
-            <h2>{{ config('app.name') }}</h2>
+            <img src="{{ url('assets/frontend/media/images/logo.png') }}">
+            {{-- <h2>{{ config('app.name') }}</h2> --}}
         </div>
         <h1>INVOICE NO #{{ $order->id }}</h1>
         <div id="company" class="clearfix">
@@ -196,7 +196,7 @@
                 @foreach ($order->items as $item)
                 <tr>
                     <td>{{ $loop->index + 1 }}</td>
-                    <td class="service text-left" style="color: <?= $item->color; ?>;">{{ $item->title }}</td>
+                    <td class="service text-left">{{ $item->title }}</td>
                     <td class="unit text-center">{{ $item->unit_price }} TK</td>
                     <td class="desc text-center">{{ $item->quantity }}</td>
                     <td class="qty text-right">{{ $item->total_price }} TK</td>
