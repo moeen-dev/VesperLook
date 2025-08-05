@@ -206,16 +206,16 @@
                     <td colspan="4">SUBTOTAL</td>
                     <td class="total text-right">{{ number_format($order->subtotal, 2) }} TK</td>
                 </tr>
-                <tr>
-                    <td colspan="4">Delivery</td>
-                    <td class="total text-right">{{ number_format($order->shipping_cost, 2) }} TK</td>
-                </tr>
                 @if($order->discount > 0)
                 <tr>
                     <td colspan="4">Discount</td>
                     <td class="total text-right">- {{ number_format($order->discount, 2) }} TK</td>
                 </tr>
                 @endif
+                <tr>
+                    <td colspan="4">Delivery</td>
+                    <td class="total text-right">{{ number_format($order->shipping_cost, 2) }} TK</td>
+                </tr>
                 <tr>
                     <td colspan="4" class="grand total">GRAND TOTAL</td>
                     <td class="grand total text-right">{{ number_format($order->total, 2) }} TK</td>
