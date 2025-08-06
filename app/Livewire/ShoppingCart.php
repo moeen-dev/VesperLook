@@ -281,42 +281,6 @@ class ShoppingCart extends Component
 
         Storage::put($path, $pdf->output());
 
-
-        // Send mail to user
-        // Mail::send([], [], function ($message) use ($order, $path) {
-        //     $supportEmail = 'support@vesperlook.com';
-        //     $supportPhone = '+880 2 55086633'; // Change this to your actual support phone
-        //     $companyName = config('app.name');
-
-        //     $message->from($supportEmail, $companyName . ' Support')
-        //         ->to($order->email)
-        //         ->subject($order->name . ', Your Order Confirmation')
-        //         ->html('
-        //                 <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
-        //                     <p>Hi <strong>' . htmlspecialchars($order->name) . '</strong>,</p>
-
-        //                     <p>🎉 Thank you for your order! We’re excited to let you know that we have received your purchase and it is now being processed.</p>
-
-        //                     <h3>Order Details:</h3>
-        //                     <ul>
-        //                         <li><strong>Order Number:</strong> #' . htmlspecialchars($order->id) . '</li>
-        //                         <li><strong>Date:</strong> ' . htmlspecialchars($order->created_at->format('F j, Y')) . '</li>
-        //                         <li><strong>Total Amount:</strong> $' . number_format($order->total, 2) . '</li>
-        //                     </ul>
-
-        //                     <p>You will receive another email once your order has shipped.<br>
-        //                     Meanwhile, if you have any questions or need assistance.<br>
-        //                     Feel free to contact our support team at <br>
-        //                     <a style="color: #d4a15d;" href="mailto:' . $supportEmail . '">' . $supportEmail . '</a> or call us at ' . $supportPhone . '.</p>
-
-        //                     <p>Thank you for choosing <strong style="color: #d4a15d;">' . $companyName . '</strong> ! We look forward to serving you again.</p>
-
-        //                     <br>
-        //                     <p>Best regards,<br>' . $companyName . ' Team</p>
-        //                 </div>
-        //             ')->attach(storage_path('app/' . $path));
-        // });
-
         Mail::to($order->email)->send(new OrderConfirmationMail($order, $path));
 
         $admins = User::where('is_admin', 1)->get();
