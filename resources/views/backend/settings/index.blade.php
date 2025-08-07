@@ -38,7 +38,7 @@
                         </div>
                         <div class="card-body">
                             <h4>SEO</h4>
-                            <p>SEO Settings, Such as- Home, Shop, and other pages, Product and Collection.</p>
+                            <p>SEO Settings, Such as- Home, Shop, and other pages.</p>
                             <a href="{{ route('admin.setting.seo.index') }}" class="card-cta">SEO Setting <i
                                     class="fas fa-chevron-right"></i></a>
                         </div>

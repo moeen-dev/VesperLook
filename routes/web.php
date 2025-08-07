@@ -100,8 +100,8 @@ Route::prefix('administration')->group(function () {
             Route::get('/', [App\Http\Controllers\Backend\SettingController::class, 'index'])->name('index');
 
             // Route for stmp mail setting
-            Route::get('/smtp-email', [App\Http\Controllers\Backend\SettingController::class, 'editEmailSettings'])->name('email.index');
-            Route::post('/smtp-email/update', [App\Http\Controllers\Backend\SettingController::class, 'updateEmailSettings'])->name('email.update');
+            Route::get('/smtp-email', [App\Http\Controllers\Backend\EmailSettingController::class, 'editEmailSettings'])->name('email.index');
+            Route::post('/smtp-email/update', [App\Http\Controllers\Backend\EmailSettingController::class, 'updateEmailSettings'])->name('email.update');
 
             // For general setting
             Route::get('/general-setting', [App\Http\Controllers\Backend\GeneralSettingController::class, 'generalSettingIndex'])->name('general.index');

@@ -1,5 +1,5 @@
 @extends('layouts.backend')
-@section('title', 'Create SEO')
+@section('title', 'Edit General Info')
 @section('content')
 <div class="main-content">
     <section class="section">
