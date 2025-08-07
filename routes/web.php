@@ -19,12 +19,9 @@ Route::get('/product/{categorySlug}/{subcategorySlug}/{productSlug}', [App\Http\
 // Controller for product quick view modal
 Route::get('/product/quick-view/{id}', [App\Http\Controllers\Frontend\ModalController::class, 'quickView'])->name('product-quickview');
 
-// Controller for Frontend Blog
-// Route::get('/blog-post', [App\Http\Controllers\Frontend\BlogController::class, 'index'])->name('blog');
-// Route::get('/blog-post/single-details', [App\Http\Controllers\Frontend\BlogController::class, 'blogDetails'])->name('blog.details');
-
 // Controller for Frontend Contact
-Route::get('/contact', [App\Http\Controllers\Frontend\ContactController::class, 'index'])->name('contact');
+Route::get('/contact-us', [App\Http\Controllers\Frontend\ContactController::class, 'index'])->name('contact');
+Route::post('/contact-us/submitting', [App\Http\Controllers\Frontend\ContactController::class, 'contactSubmit'])->name('contact.submit');
 
 // Controller for Newsletter 
 Route::post('/newsletter/subscribe', [App\Http\Controllers\Frontend\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');

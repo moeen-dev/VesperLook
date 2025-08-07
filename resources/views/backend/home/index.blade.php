@@ -93,7 +93,7 @@
                                     <h4>Total Due Amount</h4>
                                 </div>
                                 <div class="card-body">
-                                    {{ $totalDue ?? 0}}
+                                    {{ $totalDue ?? 0}}.00
                                 </div>
                             </div>
                         </div>

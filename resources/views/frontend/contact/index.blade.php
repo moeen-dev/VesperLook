@@ -31,30 +31,50 @@
 <section class="contact-area">
     <div class="container-fluid custom-container">
         <div class="section-heading pb-30">
-            <h3>join with <span>us</span></h3>
+            <h3>Contact with <span>us</span></h3>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-8 col-xl-6">
                 <div class="contact-form">
-                    <form action="#">
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
                         <div class="row">
-                            <div class="col-xl-6">
-                                <input type="text" placeholder="First Name*">
+                            <div class="col-xl-12">
+                                <input type="text" value="{{ old('name', $user->name ?? '') }}" name="name" id="name"
+                                    placeholder="First Name*" required class="@error('name') is-invalid @enderror">
                             </div>
                             <div class="col-xl-6">
-                                <input type="text" placeholder="Last Name*">
+                                <input type="email" value="{{ old('email', $user->email ?? '') }}" name="email"
+                                    id="email" placeholder="Email Address*" required
+                                    class="@error('email') is-invalid @enderror">
                             </div>
                             <div class="col-xl-6">
-                                <input type="text" placeholder="Email*">
-                            </div>
-                            <div class="col-xl-6">
-                                <input type="text" placeholder="Website">
+                                <input type="text" value="{{ old('phone_number', $user->phone_number ?? '') }}"
+                                    name="phone_number" id="phone_number" placeholder="Phone Number*" required
+                                    class="@error('phone_number') is-invalid @enderror">
                             </div>
                             <div class="col-xl-12">
-                                <textarea name="message" placeholder="Message"></textarea>
+                                <input type="text" value="{{ old('subject', $user->subject ?? '') }}" name="subject"
+                                    id="subject" placeholder="Your Subject*" required
+                                    class="@error('subject') is-invalid @enderror">
                             </div>
                             <div class="col-xl-12">
-                                <input type="submit" value="SUBMIT">
+                                <textarea name="message" id="message" placeholder="Message"
+                                    class="@error('message') is-invalid @enderror">{{ old('message', $user->message ?? '') }}</textarea>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="row align-items-center">
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                                        <label for="captcha">What is <span class="text-danger">{{ $num1 }} + {{ $num2 }}
+                                                = ?</span></label>
+                                        <input type="text" name="captcha" id="captcha" placeholder="Answer*" required
+                                            class="@error('captcha') is-invalid @enderror">
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 text-end">
+                                        <input type="submit" value="SUBMIT" style="width: 100%;">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -131,4 +151,25 @@
 </section>
 <!-- /.contact-area end -->
 
+@endsection
+@section('scripts')
+<script>
+    window.toastMessages = {
+        @if (session('success'))
+            success: @json(session('success')),
+        @endif
+        @if (session('error'))
+            error: @json(session('error')),
+        @endif
+        @if (session('info'))
+            info: @json(session('info')),
+        @endif
+        @if (session('warning'))
+            warning: @json(session('warning')),
+        @endif
+        @if ($errors->any())
+            validationErrors: @json($errors->all()), // show first validation error
+        @endif
+    };
+</script>
 @endsection

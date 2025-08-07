@@ -2474,7 +2474,6 @@ a.btn-two::after {
     bottom: 123px;
 }
 
-
 /*--------------------------------------------------------------
   ##  Banner and  Product area 2
   --------------------------------------------------------------*/
@@ -3817,7 +3816,6 @@ p.sub-title {
     transition: color 0.2s ease-in-out;
 }
 
-
 #gallery_01 {
     margin-top: 24px;
     overflow: hidden;
@@ -4057,14 +4055,13 @@ p.sub-title {
     float: right;
 }
 
-
 .coupon-wrapper {
     margin-top: 10px;
 }
 
 .coupon-input {
     padding: 12px 15px;
-    height: 45px; 
+    height: 45px;
     width: 100%;
     margin-right: 10px;
 }
@@ -4084,7 +4081,6 @@ p.sub-title {
     background-color: #3f3f3f;
     color: #fff;
 }
-
 
 .note {
     padding-top: 45px;
@@ -4639,6 +4635,12 @@ p.sub-title {
     border: none;
     margin-bottom: 30px;
     padding: 0px 20px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-bottom: 2px solid #d19e66;
+    outline: none;
 }
 
 .contact-form textarea {

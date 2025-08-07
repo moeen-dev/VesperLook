@@ -33,5 +33,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 position: "topCenter",
             });
         }
+
+        if (Array.isArray(messages.validationErrors)) {
+            messages.validationErrors.forEach(function (error) {
+                iziToast.error({
+                    title: "Oops!",
+                    message: error,
+                    position: "topCenter",
+                });
+            });
+        }
     }
 });
