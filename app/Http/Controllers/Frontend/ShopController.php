@@ -72,10 +72,12 @@ class ShopController extends Controller
 
         $seo = getSeo('product');
 
-        $bestSellers = Product::select('id', 'name', 'image', 'price', 'old_price')
+        $bestSellers = Product::with(['category', 'subcategory'])
             ->withAvg('reviews', 'rating')
+            ->orderByDesc('reviews_avg_rating')
             ->take(4)
             ->get();
+
 
         return view('frontend.shop.index', compact('products', 'subCategories', 'seo', 'bestSellers'));
     }

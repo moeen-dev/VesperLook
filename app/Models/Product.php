@@ -44,6 +44,11 @@ class Product extends Model
         return $this->belongsTo('App\Models\SubCategory', 'sub_category_id');
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Models\SubCategory', 'category_id');
+    }
+
 
     protected static function boot()
     {
@@ -69,7 +74,6 @@ class Product extends Model
     }
 
     // app/Models/Product.php
-
     public function reviews()
     {
         return $this->hasMany(Review::class);
