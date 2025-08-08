@@ -16,6 +16,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/backend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/assets/css/components.css') }}">
+    <link rel="shortcut icon" href="{{ url('assets/backend/assets/img/vesper_look.jpg') }}" type="image/x-icon">
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>

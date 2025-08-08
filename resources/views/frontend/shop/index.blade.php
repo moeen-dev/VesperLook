@@ -50,45 +50,6 @@
 
                     <div class="sidebar-widget product-widget">
                         <h6>BEST SELLERS</h6>
-                        <div class="wid-pro">
-                            <div class="sp-img">
-                                <img src="{{ url('assets/frontend/media/images/product/sb1.jpg') }}" alt="">
-                            </div>
-                            <div class="small-pro-details">
-                                <h5 class="title"><a href="#">Contrasting T-Shirt</a></h5>
-                                <span>$60</span>
-                                <span class="pre-price">$80</span>
-                                <div class="rating">
-                                    <ul>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="wid-pro">
-                            <div class="sp-img">
-                                <img src="{{ url('assets/frontend/media/images/product/sb2.jpg') }}" alt="">
-                            </div>
-                            <div class="small-pro-details">
-                                <h5 class="title"><a href="#">Contrasting T-Shirt</a></h5>
-                                <span>$60</span>
-                                <span class="pre-price">$80</span>
-                                <div class="rating">
-                                    <ul>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="wid-pro">
                             <div class="sp-img">
@@ -109,26 +70,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="wid-pro">
-                            <div class="sp-img">
-                                <img src="{{ url('assets/frontend/media/images/product/sb4.jpg') }}" alt="">
-                            </div>
-                            <div class="small-pro-details">
-                                <h5 class="title"><a href="#">Contrasting T-Shirt</a></h5>
-                                <span>$60</span>
-                                <span class="pre-price">$80</span>
-                                <div class="rating">
-                                    <ul>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                        <li><a href="#"><i class="far fa-star"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div class="sidebar-widget advertise-img">

@@ -102,22 +102,26 @@
                                             </td>
                                             <td>{{ $order->total }}</td>
                                             <td>
+                                                @if($order->delivery_status != 'delivered')
                                                 @switch($order->payment_method)
                                                 @case('cod')
-                                                Cash On Delivery
+                                                <span class="badge badge-warning">Cash On Delivery</span>
                                                 @break
 
                                                 @case('bkash')
-                                                Payment By Bkash
+                                                <span class="badge badge-success">Paid By Bkash</span>
                                                 @break
 
                                                 @case('nagad')
-                                                Payment By Nagad
+                                                <span class="badge badge-success">Paid By Nagad</span>
                                                 @break
 
                                                 @default
                                                 {{ ucfirst($order->payment_method) }}
                                                 @endswitch
+                                                @else
+                                                <span class="badge badge-success">Paid COD</span>
+                                                @endif
                                             </td>
                                             <td>{{ $order->shipping_cost }}</td>
                                             <td>{{ $order->created_at->format('F d, Y') }}</td>
@@ -125,7 +129,7 @@
                                                 style="gap: 10px;">
                                                 <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info"
                                                     data-toggle="tooltip" title="Order Details"><i
-                                                        class="far fa-edit"></i> Edit</a>
+                                                        class="far fa-edit"></i> Details</a>
                                             </td>
 
                                         </tr>

@@ -233,23 +233,31 @@
                             @foreach ($orders as $order)
                             <li class="media">
                                 @if($order->user->image)
-                                <img class="mr-3 rounded-circle" width="50" src="{{ url('upload/images', $order->user->image ) }}" alt="{{ $order->user->name }}_profile_image">
+                                <img class="mr-3 rounded-circle" width="50"
+                                    src="{{ url('upload/images', $order->user->image ) }}"
+                                    alt="{{ $order->user->name }}_profile_image">
                                 @else
-                                <img class="mr-3 rounded-circle" width="50" src="{{ url('assets/backend/assets/img/avatar/avatar-1.png') }}" alt="{{ $order->user->name}}_no_image">
+                                <img class="mr-3 rounded-circle" width="50"
+                                    src="{{ url('assets/backend/assets/img/avatar/avatar-1.png') }}"
+                                    alt="{{ $order->user->name}}_no_image">
                                 @endif
                                 <div class="media-body">
-                                    <div class="float-right text-primary">{{ $order->created_at->diffForHumans() }}</div>
+                                    <div class="float-right text-primary">{{ $order->created_at->diffForHumans() }}
+                                    </div>
                                     <div class="media-title">{{ $order->name }}</div>
-                                    <span class="text-small text-muted">{{ $order->order_note ?? 'No Order Note given!'}}</span>
+                                    <span class="text-small text-muted">{{ $order->order_note ?? 'No Order Note
+                                        given!'}}</span>
                                 </div>
-                            </li>  
+                            </li>
                             @endforeach
                         </ul>
+                        @if($orders->count() > 8)
                         <div class="text-center pt-1 pb-1">
                             <a href="{{ route('orders.index') }}" class="btn btn-primary btn-lg btn-round">
                                 View All
                             </a>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

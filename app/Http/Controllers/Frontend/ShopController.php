@@ -72,7 +72,12 @@ class ShopController extends Controller
 
         $seo = getSeo('product');
 
-        return view('frontend.shop.index', compact('products', 'subCategories', 'seo'));
+        $bestSellers = Product::select('id', 'name', 'image', 'price', 'old_price')
+            ->withAvg('reviews', 'rating')
+            ->take(4)
+            ->get();
+
+        return view('frontend.shop.index', compact('products', 'subCategories', 'seo', 'bestSellers'));
     }
 
     // Single products showing
