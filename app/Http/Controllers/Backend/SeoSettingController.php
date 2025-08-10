@@ -93,8 +93,11 @@ class SeoSettingController extends Controller
         $subCategories = SubCategory::select('id', 'subcategory_name')->get();
         $products = Product::select('id', 'title')->get();
 
+        $seoCollectionIds = SeoSetting::where('page_type', 'collection')->pluck('reference_id')->toArray();
+        $seoProductIds = SeoSetting::where('page_type', 'product')->pluck('reference_id')->toArray();
+
         $seoSetting = SeoSetting::findOrFail(intval($id));
-        return view('backend.settings.seo.edit', compact('seoSetting', 'subCategories', 'products'));
+        return view('backend.settings.seo.edit', compact('seoSetting', 'subCategories', 'products', 'seoCollectionIds', 'seoProductIds'));
     }
 
     /**

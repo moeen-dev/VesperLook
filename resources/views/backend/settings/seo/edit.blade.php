@@ -26,8 +26,8 @@
                                     class="fa fa-list"></i> SEO Table</a>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.setting.seo.update', $seoSetting->id) }}" method="POST" class="needs-validation"
-                                enctype="multipart/form-data">
+                            <form action="{{ route('admin.setting.seo.update', $seoSetting->id) }}" method="POST"
+                                class="needs-validation" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -36,15 +36,41 @@
                                     <label class="form-control-label col-sm-3 text-md-right">Page Type <span
                                             class="text-danger">*</span></label>
                                     <div class="col-sm-6 col-md-9">
-                                        <select class="form-control @error('page_type') is-invalid @enderror" name="page_type" id="page_type">
-                                            <option value="" disabled {{ old('page_type', $seoSetting->page_type ?? '') == '' ? 'selected' : '' }}>
+                                        <select class="form-control @error('page_type') is-invalid @enderror"
+                                            name="page_type" id="page_type">
+                                            <option value="" disabled {{ old('page_type', $seoSetting->page_type ?? '')
+                                                == '' ? 'selected' : '' }}>
                                                 ---Please Select an Option---
                                             </option>
-                                            <option value="home" {{ old('page_type', $seoSetting->page_type ?? '') == 'home' ? 'selected' : '' }}>Home</option>
-                                            <option value="collection" {{ old('page_type', $seoSetting->page_type ?? '') == 'collection' ? 'selected' : ''
+                                            <option value="home" {{ old('page_type', $seoSetting->page_type ?? '') ==
+                                                'home' ? 'selected' : '' }}>Home</option>
+                                            <option value="collection" {{ old('page_type', $seoSetting->page_type ?? '')
+                                                == 'collection' ? 'selected' : ''
                                                 }}>Collection</option>
-                                            <option value="product" {{ old('page_type', $seoSetting->page_type ?? '') == 'product' ? 'selected' : '' }}>Shop</option>
-                                            <option value="contact" {{ old('page_type', $seoSetting->page_type ?? '') == 'contact' ? 'selected' : '' }}>Contact
+                                            <option value="product" {{ old('page_type', $seoSetting->page_type ?? '') ==
+                                                'product' ? 'selected' : '' }}>Shop</option>
+                                            <option value="contact" {{ old('page_type', $seoSetting->page_type ?? '') ==
+                                                'contact' ? 'selected' : '' }}>Contact
+                                            <option value="orderandreturns" {{ old('page_type', $seoSetting->page_type
+                                                ?? '') == 'orderandreturns' ? 'selected' : '' }}>Order & Returns
+                                            </option>
+                                            <option value="privacy" {{ old('page_type', $seoSetting->page_type
+                                                ?? '') == 'privacy' ? 'selected' : '' }}>Privacy Policy
+                                            </option>
+                                            <option value="aboutus" {{ old('page_type', $seoSetting->page_type
+                                                ?? '') == 'aboutus' ? 'selected' : '' }}>About Us
+                                            </option>
+                                            <option value="customerservice" {{ old('page_type', $seoSetting->page_type
+                                                ?? '') == 'customerservice' ? 'selected' : '' }}>Customer Service
+                                            </option>
+                                            <option value="support" {{ old('page_type', $seoSetting->page_type
+                                                ?? '') == 'support' ? 'selected' : '' }}>Support Center
+                                            </option>
+                                            <option value="exchange" {{ old('page_type', $seoSetting->page_type
+                                                ?? '') == 'exchange' ? 'selected' : '' }}>Return & Exchange
+                                            </option>
+                                            <option value="faq" {{ old('page_type', $seoSetting->page_type
+                                                ?? '') == 'faq' ? 'selected' : '' }}>Frequently Asked Questions (FAQ's)
                                             </option>
                                         </select>
                                         @if($errors->has('page_type'))
@@ -63,9 +89,18 @@
                                         (Optional)</label>
                                     <div class="col-sm-6 col-md-9">
                                         <select class="form-control select2" id="collection_id">
-                                            <option value="" disabled {{ old('reference_id', $seoSetting->reference_id ?? '') == '' ? 'selected' : '' }}>---Select Collection---</option>
+                                            <option value="" disabled {{ old('reference_id', $seoSetting->reference_id
+                                                ?? '') == '' ? 'selected' : '' }}>---Select Collection---</option>
                                             @foreach($subCategories as $subCategory)
-                                            <option value="{{ $subCategory->id }}" {{ old('reference_id', $seoSetting->reference_id ?? '') == $subCategory->id ? 'selected' : '' }}>
+
+                                            @php
+                                            $hasSeo = in_array($subCategory->id, $seoCollectionIds);
+                                            @endphp
+
+
+                                            <option value="{{ $subCategory->id }}" {{ old('reference_id', $seoSetting->
+                                                reference_id ?? '') == $subCategory->id ? 'selected' : '' }}>
+                                                {!! $hasSeo ? '<span style="color:green;">✅</span>' : '' !!}
                                                 {{ $subCategory->subcategory_name }}
                                             </option>
                                             @endforeach
@@ -80,9 +115,17 @@
                                         (Optional)</label>
                                     <div class="col-sm-6 col-md-9">
                                         <select class="form-control select2" id="product_id">
-                                            <option value="" {{ old('reference_id', $seoSetting->reference_id ?? '') == '' ? 'selected' : '' }} disabled>Select Product</option>
+                                            <option value="" {{ old('reference_id', $seoSetting->reference_id ?? '') ==
+                                                '' ? 'selected' : '' }} disabled>Select Product</option>
                                             @foreach($products as $product)
-                                            <option value="{{ $product->id }}" {{ old('reference_id', $seoSetting->reference_id ?? '') == $product->id ? 'selected' : '' }}>
+                                            
+                                            @php
+                                            $hasSeo = in_array($product->id, $seoProductIds);
+                                            @endphp
+
+                                            <option value="{{ $product->id }}" {{ old('reference_id', $seoSetting->
+                                                reference_id ?? '') == $product->id ? 'selected' : '' }}>
+                                                {!! $hasSeo ? '<span style="color:green;">✅</span>' : '' !!}
                                                 {{ $product->title }}
                                             </option>
                                             @endforeach
@@ -134,13 +177,15 @@
                                 </div>
 
                                 <div class="card-footer bg-whitesmoke text-md-right">
-                                    <a href="{{ url()->previous() }}" class="btn btn-danger"><i class="fas fa-times"></i>
+                                    <a href="{{ url()->previous() }}" class="btn btn-danger"><i
+                                            class="fas fa-times"></i>
                                         Cancel</a>
-                                    
+
                                     <button class="btn btn-primary" id="save-btn"><i class="fas fa-check"></i> Update
                                         Details</button>
-                                    
-                                    <a href="{{ route('admin.setting.index') }}" class="btn btn-info"><i class="fas fa-times"></i>
+
+                                    <a href="{{ route('admin.setting.index') }}" class="btn btn-info"><i
+                                            class="fas fa-times"></i>
                                         Go back Setting</a>
                                 </div>
 

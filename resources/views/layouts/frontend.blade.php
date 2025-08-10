@@ -30,10 +30,10 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="top-bar-left">
-                                <p><i class="fas fa-phone"></i><a href="tel:{{ $genSetting->phone_number }}">{{ $genSetting->phone_number ?? 'Not Available' }}</a></p>
+                                <p><i class="fas fa-phone"></i><a href="tel:{{ $genSetting->phone_number ?? '' }}">{{ $genSetting->phone_number ?? 'Not Available' }}</a></p>
 
                                 <p><i class="far fa-envelope"></i>
-                                    <a href="mailto:{{ $genSetting->email }}">{{ $genSetting->email ?? 'Not Available' }}</a>
+                                    <a href="mailto:{{ $genSetting->email ?? ''}}">{{ $genSetting->email ?? 'Not Available' }}</a>
                                 </p>
                             </div>
                         </div>
@@ -42,16 +42,16 @@
                             <div class="top-bar-right">
                                 <div class="social">
                                     <ul>
-                                        @if($genSetting->facebook_url)
+                                        @if(!empty($genSetting) && $genSetting->facebook_url)
                                         <li><a href="{{ $genSetting->facebook_url }}"><i class="fab fa-facebook-f" target="_blank"></i></a></li>
                                         @endif
-                                        @if($genSetting->pinterest_url)
+                                        @if(!empty($genSetting) && $genSetting->pinterest_url)
                                         <li><a href="{{ $genSetting->pinterest_url }}"><i class="fab fa-pinterest-p" target="_blank"></i></a></li>
                                         @endif
-                                        @if($genSetting->instagram_url)
+                                        @if(!empty($genSetting) && $genSetting->instagram_url)
                                         <li><a href="{{ $genSetting->instagram_url }}"><i class="fab fa-instagram" target="_blank"></i></a></li>
                                         @endif
-                                        @if($genSetting->linkedin_url)
+                                        @if(!empty($genSetting) && $genSetting->linkedin_url)
                                         <li><a href="{{ $genSetting->linkedin_url }}"><i class="fab fa-linkedin-in" target="_blank"></i></a></li>
                                         @endif
                                     </ul>

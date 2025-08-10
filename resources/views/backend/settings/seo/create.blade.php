@@ -56,6 +56,8 @@
 
                                             <option value="customerservice" {{ old('page_type')=='customerservice'
                                                 ? 'selected' : '' }}>Customer Service</option>
+                                            <option value="aboutus" {{ old('page_type')=='aboutus'
+                                                ? 'selected' : '' }}>About Us</option>
 
                                             <option value="support" {{ old('page_type')=='support' ? 'selected' : '' }}>
                                                 Support Center</option>
@@ -115,7 +117,7 @@
                                             @endphp
 
                                             <option value="{{ $product->id }}" {{ old('reference_id')==$product->id ?
-                                                'selected' : '' }}>
+                                                'selected' : '' }} required>
                                                 {!! $hasSeo ? '<span style="color:green;">✅</span>' : '' !!}
                                                 {{ $product->title }}
                                             </option>

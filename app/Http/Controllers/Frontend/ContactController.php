@@ -24,7 +24,9 @@ class ContactController extends Controller
             'captcha_time' => now()
         ]);
 
-        return view('frontend.contact.index', compact('user', 'num1', 'num2'));
+        $seo = getSeo('contact');
+
+        return view('frontend.contact.index', compact('user', 'num1', 'num2', 'seo'));
     }
 
     public function contactSubmit(Request $request)
