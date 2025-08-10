@@ -395,16 +395,14 @@
                     <!-- /.col-xl-3 -->
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3">
                         <div class="footer-widget style-two">
-                            <h3>Quick shop</h3>
+                            <h3>Quick Links</h3>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Clothing</a></li>
-                                    <li><a href="#">Jewellery</a></li>
-                                    <li><a href="#">Shoes</a></li>
-                                    <li><a href="#">Accessories</a></li>
-                                    <li><a href="#">Collections</a></li>
-                                    <li><a href="#">Sale</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Collection</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Our Shop</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -415,13 +413,11 @@
                             <h3>CUSTOMER SERVICES</h3>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="#">FAQ's</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Customer Service</a></li>
-                                    <li><a href="#">Orders and Returns</a></li>
-                                    <li><a href="#">Consultant</a></li>
-                                    <li><a href="#">Collections</a></li>
-                                    <li><a href="#">Support Center</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Orders & Returns</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Return & Exchange</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Support Center</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ's</a></li>
                                 </ul>
                             </div>
                         </div>
