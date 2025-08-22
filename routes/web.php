@@ -109,6 +109,7 @@ Route::prefix('administration')->group(function () {
             
             // For settings for seo setting
             Route::resource('/seo', App\Http\Controllers\Backend\SeoSettingController::class);
+            Route::resource('/about', App\Http\Controllers\Backend\AboutController::class);
         });
     });
 });
