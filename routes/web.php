@@ -109,7 +109,10 @@ Route::prefix('administration')->group(function () {
             
             // For settings for seo setting
             Route::resource('/seo', App\Http\Controllers\Backend\SeoSettingController::class);
-            Route::resource('/about', App\Http\Controllers\Backend\AboutController::class);
+
+            // For About shop page
+            Route::get('/about', [App\Http\Controllers\Backend\AboutController::class, 'aboutIndex'])->name('about.index');
+            Route::post('/about/update', [App\Http\Controllers\Backend\AboutController::class, 'aboutUpdate'])->name('about.update');
         });
     });
 });

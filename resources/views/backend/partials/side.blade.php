@@ -122,8 +122,8 @@
                     <li class="{{ Route::is('admin.setting.index') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.setting.index') }}">Settings</a>
                     </li>
-                    <li class="{{ Route::is('admin.setting.seo.create') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('admin.setting.seo.create') }}">Create Coupon </a>
+                    <li class="{{ Route::is('admin.setting.about.index') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.setting.about.index') }}">About Shop </a>
                     </li>
                 </ul>
             </li>
