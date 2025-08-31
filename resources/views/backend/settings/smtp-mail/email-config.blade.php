@@ -36,7 +36,7 @@
                                                     <i class="fas fa-server"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="MAIL_MAILER" id="MAIL_MAILER" value="{{ env('MAIL_MAILER') }}" class="form-control @error('MAIL_MAILER') is-invalid @enderror"">
+                                            <input type="text" name="MAIL_MAILER" id="MAIL_MAILER" value="{{ old('MAIL_MAILER', env('MAIL_MAILER')) }}" class="form-control @error('MAIL_MAILER') is-invalid @enderror" placeholder="e.g., smtp">
                                             
                                         </div>
                                         @if($errors->has('MAIL_MAILER'))
@@ -52,7 +52,7 @@
                                                     <i class="fas fa-envelope"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="MAIL_HOST" id="MAIL_HOST" value="{{ env('MAIL_HOST') }}" class="form-control @error('MAIL_HOST') is-invalid @enderror"">
+                                            <input type="text" name="MAIL_HOST" id="MAIL_HOST" value="{{ old('Mail_HOST', env('MAIL_HOST')) }}" class="form-control @error('MAIL_HOST') is-invalid @enderror" placeholder="smpt.mailserver.com">
                                             
                                         </div>
                                         @if($errors->has('MAIL_HOST'))
@@ -68,7 +68,7 @@
                                                     <i class="fas fa-envelope-open-text"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="MAIL_PORT" id="MAIL_PORT" value="{{ env('MAIL_PORT') }}" class="form-control @error('MAIL_PORT') is-invalid @enderror"">
+                                            <input type="text" name="MAIL_PORT" id="MAIL_PORT" value="{{ old('MAIL_PORT', env('MAIL_PORT')) }}" class="form-control @error('MAIL_PORT') is-invalid @enderror" placeholder="e.g., 465">
                                             
                                         </div>
                                         @if($errors->has('MAIL_PORT'))
@@ -84,7 +84,7 @@
                                                     <i class="fas fa-at"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="MAIL_USERNAME" id="MAIL_USERNAME" value="{{ env('MAIL_USERNAME') }}" class="form-control @error('MAIL_USERNAME') is-invalid @enderror"">
+                                            <input type="text" name="MAIL_USERNAME" id="MAIL_USERNAME" value="{{ old('MAIL_USERNAME', env('MAIL_USERNAME')) }}" class="form-control @error('MAIL_USERNAME') is-invalid @enderror" placeholder="username@domain.com"> 
                                             
                                         </div>
                                         @if($errors->has('MAIL_USERNAME'))
@@ -102,7 +102,7 @@
                                                     <i class="fas fa-key"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="MAIL_PASSWORD" id="MAIL_PASSWORD" value="{{ env('MAIL_PASSWORD') }}" class="form-control @error('MAIL_PASSWORD') is-invalid @enderror"">
+                                            <input type="text" name="MAIL_PASSWORD" id="MAIL_PASSWORD" value="{{ old('MAIL_PASSWORD', env('MAIL_PASSWORD')) }}" class="form-control @error('MAIL_PASSWORD') is-invalid @enderror" placeholder="Your mail password here">
                                             
                                         </div>
                                         @if($errors->has('MAIL_PASSWORD'))
@@ -118,7 +118,7 @@
                                                     <i class="fas fa-lock"></i>
                                                 </div>
                                             </div> 
-                                            <input type="text" name="MAIL_ENCRYPTION" id="MAIL_ENCRYPTION" value="{{ env('MAIL_ENCRYPTION') }}" class="form-control @error('MAIL_ENCRYPTION') is-invalid @enderror"">
+                                            <input type="text" name="MAIL_ENCRYPTION" id="MAIL_ENCRYPTION" value="{{ old('MAIL_ENCRYPTION', env('MAIL_ENCRYPTION')) }}" class="form-control @error('MAIL_ENCRYPTION') is-invalid @enderror" placeholder="ssl">
                                             
                                         </div>
                                         @if($errors->has('MAIL_ENCRYPTION'))
@@ -134,7 +134,7 @@
                                                     <i class="fas fa-paper-plane"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="MAIL_FROM_ADDRESS" id="MAIL_FROM_ADDRESS" value="{{ env('MAIL_FROM_ADDRESS') }}" class="form-control @error('MAIL_FROM_ADDRESS') is-invalid @enderror"">
+                                            <input type="text" name="MAIL_FROM_ADDRESS" id="MAIL_FROM_ADDRESS" value="{{ old('MAIL_FROM_ADDRESS', env('MAIL_FROM_ADDRESS')) }}" class="form-control @error('MAIL_FROM_ADDRESS') is-invalid @enderror" placeholder="Your Mail Here">
                                             
                                         </div>
                                         @if($errors->has('MAIL_FROM_ADDRESS'))
@@ -150,7 +150,7 @@
                                                    <i class="fas fa-user-tie"></i>
                                                 </div>
                                             </div>
-                                            <input type="text" name="MAIL_FROM_NAME" id="MAIL_FROM_NAME" value="{{ env('MAIL_FROM_NAME') }}" class="form-control @error('MAIL_FROM_NAME') is-invalid @enderror"">
+                                            <input type="text" name="MAIL_FROM_NAME" id="MAIL_FROM_NAME" value="{{ old('MAIL_FROM_NAME', env('MAIL_FROM_NAME')) }}" class="form-control @error('MAIL_FROM_NAME') is-invalid @enderror" placeholder="Your Application Name">
                                             
                                         </div>
                                         @if($errors->has('MAIL_FROM_NAME'))
