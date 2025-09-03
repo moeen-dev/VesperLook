@@ -53,7 +53,8 @@
             {{-- SubCategory Side Menu --}}
             <li class="menu-header">Sub Category </li>
             <li class="dropdown {{ Route::is('sub-category.*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-list"></i><span>Sub Category </span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-list"></i><span>Sub Category
+                    </span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Route::is('sub-category.index') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('sub-category.index') }}">All Sub Category </a>
@@ -67,7 +68,8 @@
             {{-- Product Side Menu --}}
             <li class="menu-header">Products </li>
             <li class="dropdown {{ Route::is('products.*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fab fa-product-hunt"></i><span>Product </span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fab fa-product-hunt"></i><span>Product
+                    </span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Route::is('products.index') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('products.index') }}">All Product </a>
@@ -95,7 +97,8 @@
             {{-- Coupons Discount --}}
             <li class="menu-header">Discount Coupons </li>
             <li class="dropdown {{ Route::is('coupon.*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-ticket-alt"></i><span>Coupons </span></a>
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-ticket-alt"></i><span>Coupons
+                    </span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ Route::is('coupon.index') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('coupon.index') }}">All Coupons</a>
@@ -124,6 +127,9 @@
                     </li>
                     <li class="{{ Route::is('admin.setting.about.index') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.setting.about.index') }}">About Shop </a>
+                    </li>
+                    <li class="{{ Route::is('admin.setting.order.return.policy') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.setting.order.return.policy') }}">Return Policy</a>
                     </li>
                 </ul>
             </li>

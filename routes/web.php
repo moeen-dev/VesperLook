@@ -113,6 +113,9 @@ Route::prefix('administration')->group(function () {
             // For About shop page
             Route::get('/about', [App\Http\Controllers\Backend\AboutController::class, 'aboutIndex'])->name('about.index');
             Route::post('/about/update', [App\Http\Controllers\Backend\AboutController::class, 'aboutUpdate'])->name('about.update');
+
+            // For Order Return page
+            Route::get('/order-return-policy', [App\Http\Controllers\Backend\OrderReturnController::class, 'orderReturnIndex'])->name('order.return.policy');
         });
     });
 });
