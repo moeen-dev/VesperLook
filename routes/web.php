@@ -106,7 +106,7 @@ Route::prefix('administration')->group(function () {
             // For general setting
             Route::get('/general-setting', [App\Http\Controllers\Backend\GeneralSettingController::class, 'generalSettingIndex'])->name('general.index');
             Route::post('/general-setting/update', [App\Http\Controllers\Backend\GeneralSettingController::class, 'generalSettingUpdate'])->name('general.edit');
-            
+
             // For settings for seo setting
             Route::resource('/seo', App\Http\Controllers\Backend\SeoSettingController::class);
 
@@ -116,6 +116,11 @@ Route::prefix('administration')->group(function () {
 
             // For Order Return page
             Route::get('/order-return-policy', [App\Http\Controllers\Backend\OrderReturnController::class, 'orderReturnIndex'])->name('order.return.policy');
+            Route::post('/order-return-policy/update', [App\Http\Controllers\Backend\OrderReturnController::class, 'orderReturnUpdate'])->name('return.policy.update');
+
+            // For Privacy Policy
+            Route::get('/privacy-policy', [App\Http\Controllers\Backend\PrivacyController::class, 'privacyPolicyIndex'])->name('privacy.policy');
+            Route::post('/privacy-policy/update', [App\Http\Controllers\Backend\PrivacyController::class, 'privacyPolicyUpdate'])->name('privacy.policy.update');
         });
     });
 });

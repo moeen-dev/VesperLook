@@ -122,15 +122,23 @@
             <li class="dropdown {{ Route::is('admin.setting.*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-wrench"></i><span>Setting </span></a>
                 <ul class="dropdown-menu">
+                    {{-- General Settings --}}
                     <li class="{{ Route::is('admin.setting.index') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.setting.index') }}">Settings</a>
                     </li>
+                    {{-- About shop --}}
                     <li class="{{ Route::is('admin.setting.about.index') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.setting.about.index') }}">About Shop </a>
                     </li>
+                    {{-- Return Policy --}}
                     <li class="{{ Route::is('admin.setting.order.return.policy') ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('admin.setting.order.return.policy') }}">Return Policy</a>
                     </li>
+                    {{-- Privacy Policy --}}
+                    <li class="{{ Route::is('admin.setting.return.porlicy') ? 'active' : '' }}">
+                        <a href="{{ route('admin.setting.privacy.policy') }}" class="nav-link">Privacy Policy</a>
+                    </li>
+
                 </ul>
             </li>
 

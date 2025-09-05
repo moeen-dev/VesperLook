@@ -1,13 +1,13 @@
 @extends('layouts.backend')
-@section('title', 'Edit About Info')
+@section('title', 'Edit Orer Return Policy')
 @section('content')
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>About Us</h1>
+                <h1>Order Return Policy</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
-                    <div class="breadcrumb-item">Create or Update About us info.</div>
+                    <div class="breadcrumb-item">Create or Update Order Return Policy</div>
                 </div>
             </div>
 
@@ -20,17 +20,17 @@
                                 <h4>Fill in the details and click Save.</h4>
                             </div>
                             <div class="card-body">
-                                <form action="{{ route('admin.setting.about.update') }}" method="POST"
+                                <form action="{{ route('admin.setting.return.policy.update') }}" method="POST"
                                     class="needs-validation" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">About
-                                            Description</label>
+                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Order Return
+                                            Policy</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <textarea class="form-control summernote" name="about_desc" rows="5">{{ old('about_desc', $about->about_desc ?? '') }}</textarea>
-                                            @if ($errors->has('about_desc'))
-                                                <small class="text-danger">{{ $errors->first('about_desc') }}</small>
+                                            <textarea class="form-control summernote" name="order_returns" rows="5">{{ old('order_returns', $orderReturn->order_returns ?? '') }}</textarea>
+                                            @if ($errors->has('order_returns'))
+                                                <small class="text-danger">{{ $errors->first('order_returns') }}</small>
                                             @endif
                                         </div>
                                     </div>
@@ -38,7 +38,7 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                         <div class="col-sm-12 col-md-7">
-                                            <button type="submit" class="btn btn-primary">Update About</button>
+                                            <button type="submit" class="btn btn-primary">Update Order Return</button>
                                         </div>
                                     </div>
 
