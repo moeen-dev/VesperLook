@@ -138,6 +138,14 @@
                     <li class="{{ Route::is('admin.setting.return.porlicy') ? 'active' : '' }}">
                         <a href="{{ route('admin.setting.privacy.policy') }}" class="nav-link">Privacy Policy</a>
                     </li>
+                    {{-- Payment Policy --}}
+                    <li class="{{ Route::is('admin.setting.payment.policy') ? 'active' : '' }}">
+                        <a href="{{ route('admin.setting.payment.policy') }}" class="nav-link">Payment Policy</a>
+                    </li>
+                    {{-- Frequently Asked Question --}}
+                    <li class="active">
+                        <a href="{{ route('admin.setting.faq.index') }}" class="nav-link"> FAQ's</a>
+                    </li>
 
                 </ul>
             </li>

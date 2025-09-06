@@ -30,10 +30,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="top-bar-left">
-                                <p><i class="fas fa-phone"></i><a href="tel:{{ $genSetting->phone_number ?? '' }}">{{ $genSetting->phone_number ?? 'Not Available' }}</a></p>
+                                <p><i class="fas fa-phone"></i><a
+                                        href="tel:{{ $genSetting->phone_number ?? '' }}">{{ $genSetting->phone_number ?? 'Not Available' }}</a>
+                                </p>
 
                                 <p><i class="far fa-envelope"></i>
-                                    <a href="mailto:{{ $genSetting->email ?? ''}}">{{ $genSetting->email ?? 'Not Available' }}</a>
+                                    <a
+                                        href="mailto:{{ $genSetting->email ?? '' }}">{{ $genSetting->email ?? 'Not Available' }}</a>
                                 </p>
                             </div>
                         </div>
@@ -42,28 +45,32 @@
                             <div class="top-bar-right">
                                 <div class="social">
                                     <ul>
-                                        @if(!empty($genSetting) && $genSetting->facebook_url)
-                                        <li><a href="{{ $genSetting->facebook_url }}"><i class="fab fa-facebook-f" target="_blank"></i></a></li>
+                                        @if (!empty($genSetting) && $genSetting->facebook_url)
+                                            <li><a href="{{ $genSetting->facebook_url }}"><i class="fab fa-facebook-f"
+                                                        target="_blank"></i></a></li>
                                         @endif
-                                        @if(!empty($genSetting) && $genSetting->pinterest_url)
-                                        <li><a href="{{ $genSetting->pinterest_url }}"><i class="fab fa-pinterest-p" target="_blank"></i></a></li>
+                                        @if (!empty($genSetting) && $genSetting->pinterest_url)
+                                            <li><a href="{{ $genSetting->pinterest_url }}"><i class="fab fa-pinterest-p"
+                                                        target="_blank"></i></a></li>
                                         @endif
-                                        @if(!empty($genSetting) && $genSetting->instagram_url)
-                                        <li><a href="{{ $genSetting->instagram_url }}"><i class="fab fa-instagram" target="_blank"></i></a></li>
+                                        @if (!empty($genSetting) && $genSetting->instagram_url)
+                                            <li><a href="{{ $genSetting->instagram_url }}"><i class="fab fa-instagram"
+                                                        target="_blank"></i></a></li>
                                         @endif
-                                        @if(!empty($genSetting) && $genSetting->linkedin_url)
-                                        <li><a href="{{ $genSetting->linkedin_url }}"><i class="fab fa-linkedin-in" target="_blank"></i></a></li>
+                                        @if (!empty($genSetting) && $genSetting->linkedin_url)
+                                            <li><a href="{{ $genSetting->linkedin_url }}"><i class="fab fa-linkedin-in"
+                                                        target="_blank"></i></a></li>
                                         @endif
                                     </ul>
                                 </div>
-                                @if(Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
-                                @if(Route::is('user.profile'))
-                                <a href="{{ route('user.logout') }}" class="my-account">Sign Out</a>
+                                @if (Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
+                                    @if (Route::is('user.profile'))
+                                        <a href="{{ route('user.logout') }}" class="my-account">Sign Out</a>
+                                    @else
+                                        <a href="{{ route('user.profile') }}" class="my-account">My Account</a>
+                                    @endif
                                 @else
-                                <a href="{{ route('user.profile') }}" class="my-account">My Account</a>
-                                @endif
-                                @else
-                                <a href="{{ route('user.login') }}" class="my-account">Sign In</a>
+                                    <a href="{{ route('user.login') }}" class="my-account">Sign In</a>
                                 @endif
                             </div>
                             <!--top-bar-right end-->
@@ -82,7 +89,7 @@
             <div class="container-fluid custom-container menu-rel-container">
                 <div class="row">
                     <!-- Logo
-				============================================= -->
+    ============================================= -->
                     <div class="col-lg-6 col-xl-3">
                         <div class="logo">
                             <a href="{{ route('home') }}">
@@ -93,14 +100,14 @@
                     <!--Col end-->
 
                     <!-- Main menu
-				============================================= -->
+    ============================================= -->
 
                     <div class="col-lg-12 col-xl-7 order-lg-3 order-xl-2 menu-container">
                         <div class="mainmenu style-two">
                             <ul id="navigation">
 
                                 <li><a href="{{ route('home') }}"
-                                        class="{{ Route::is('home') ? 'active' : ''}}">Home</a></li>
+                                        class="{{ Route::is('home') ? 'active' : '' }}">Home</a></li>
                                 <li>
                                     <a href="{{ route('collection') }}"
                                         class="{{ Route::is('collection') || Route::is('collection.show') ? 'active' : '' }}">
@@ -111,16 +118,16 @@
                                 <li class="has-child"><a style="cursor: pointer;">Category</a>
                                     <div class="mega-menu">
                                         @foreach ($navbarCategories as $category)
-                                        <div class="mega-catagory per-25">
-                                            <h4><a class="font-red">{{ $category->category_name }}</a></h4>
-                                            <ul class="mega-button">
-                                                @foreach($category->subcategories as $subcategory)
-                                                <li><a
-                                                        href="{{ route('collection.show', ['categorySlug' => $category->slug, 'subcategorySlug' => $subcategory->slug]) }}">{{
-                                                        $subcategory->subcategory_name }}</a></li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
+                                            <div class="mega-catagory per-25">
+                                                <h4><a class="font-red">{{ $category->category_name }}</a></h4>
+                                                <ul class="mega-button">
+                                                    @foreach ($category->subcategories as $subcategory)
+                                                        <li><a
+                                                                href="{{ route('collection.show', ['categorySlug' => $category->slug, 'subcategorySlug' => $subcategory->slug]) }}">{{ $subcategory->subcategory_name }}</a>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
                                         @endforeach
                                     </div>
                                 </li>
@@ -132,12 +139,12 @@
                                 <!-- Men's Category end -->
 
                                 <li><a href="{{ route('shop') }}"
-                                        class="{{ Route::is('shop') || Route::is('shop.details') ? 'active' : ''}}">Shop</a>
+                                        class="{{ Route::is('shop') || Route::is('shop.details') ? 'active' : '' }}">Shop</a>
                                 </li>
                                 {{-- <li><a href="{{ route('blog') }}"
                                         class="{{ Route::is('blog') ? 'active' : ''}}">Blog</a></li> --}}
                                 <li><a href="{{ route('contact') }}"
-                                        class="{{ Route::is('contact') ? 'active' : ''}}">Contact</a></li>
+                                        class="{{ Route::is('contact') ? 'active' : '' }}">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -152,18 +159,22 @@
                                     <input type="text" class="search-input" placeholder="Search">
                                 </li>
 
-                                @if(Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
-                                @if(Route::is('user.profile'))
-                                <li><a href="{{ route('user.logout') }}"><i class="fi fi-rs-user-logout"></i></a></li>
+                                @if (Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
+                                    @if (Route::is('user.profile'))
+                                        <li><a href="{{ route('user.logout') }}"><i
+                                                    class="fi fi-rs-user-logout"></i></a></li>
+                                    @else
+                                        <li><a href="{{ route('user.profile') }}"><i class="fi fi-rs-user"></i></a>
+                                        </li>
+                                    @endif
+                                    <li class="top-cart"><a href="{{ route('cart.index') }}"><i
+                                                class="fi fi-rs-shopping-bag"></i><span>{{ $cart->count() }}</span></a>
+                                    </li>
                                 @else
-                                <li><a href="{{ route('user.profile') }}"><i class="fi fi-rs-user"></i></a></li>
-                                @endif
-                                <li class="top-cart"><a href="{{ route('cart.index') }}"><i
-                                            class="fi fi-rs-shopping-bag"></i><span>{{ $cart->count()}}</span></a></li>
-                                @else
-                                <li><a href="{{ route('user.login') }}"><i class="fi fi-rs-login"></i></a></li>
-                                <li class="top-cart"><a href="{{ route('user.login', ['redirect' => 'cart']) }}"><i
-                                            class="fi fi-rs-shopping-bag"></i><span>{{ $cart->count()}}</span></a></li>
+                                    <li><a href="{{ route('user.login') }}"><i class="fi fi-rs-login"></i></a></li>
+                                    <li class="top-cart"><a href="{{ route('user.login', ['redirect' => 'cart']) }}"><i
+                                                class="fi fi-rs-shopping-bag"></i><span>{{ $cart->count() }}</span></a>
+                                    </li>
                                 @endif
 
                             </ul>
@@ -188,7 +199,7 @@
                 <div class="row">
 
                     <!-- Mobile menu Opener
-					============================================= -->
+     ============================================= -->
                     <div class="col-4">
                         <div class="accordion-wrapper">
                             <a href="#" class="mobile-open"><i class="flaticon-menu-1"></i></a>
@@ -203,12 +214,14 @@
                     </div>
                     <div class="col-4">
                         <div class="top-cart">
-                            @if(Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
-                            <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                ({{ $cart->count() }})</a>
+                            @if (Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
+                                <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"
+                                        aria-hidden="true"></i>
+                                    ({{ $cart->count() }})</a>
                             @else
-                            <a href="{{ route('user.login', ['redirect' => 'cart']) }}"><i class="fa fa-shopping-cart"
-                                    aria-hidden="true"></i> ({{ $cart->count() }})</a>
+                                <a href="{{ route('user.login', ['redirect' => 'cart']) }}"><i
+                                        class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    ({{ $cart->count() }})</a>
                             @endif
                         </div>
                     </div>
@@ -221,7 +234,7 @@
         <div class="accordion-wrapper">
 
             <!-- Mobile Menu Navigation
-				============================================= -->
+    ============================================= -->
             <div id="mobilemenu" class="accordion">
                 <ul>
                     <li class="mob-logo"><a href="{{ route('home') }}">
@@ -235,14 +248,14 @@
 
                     <li>
                         @foreach ($navbarCategories as $category)
-                        <a class="link">{{ $category->category_name }}<i class="fa fa-chevron-down"></i></a>
-                        <ul class="submenu">
-                            @foreach($category->subcategories as $subcategory)
-                            <li><a
-                                    href="{{ route('collection.show', ['categorySlug' => $category->slug, 'subcategorySlug' => $subcategory->slug]) }}">{{
-                                    $subcategory->subcategory_name }}</a></li>
-                            @endforeach
-                        </ul>
+                            <a class="link">{{ $category->category_name }}<i class="fa fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                @foreach ($category->subcategories as $subcategory)
+                                    <li><a
+                                            href="{{ route('collection.show', ['categorySlug' => $category->slug, 'subcategorySlug' => $subcategory->slug]) }}">{{ $subcategory->subcategory_name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
                         @endforeach
                     </li>
 
@@ -253,12 +266,12 @@
 
                 </ul>
                 <div class="mobile-login">
-                    @if(Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
-                    <a href="{{ route('user.profile') }}">View Profile</a> |
-                    <a href="{{ route('user.logout') }}">Sign Out</a>
+                    @if (Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
+                        <a href="{{ route('user.profile') }}">View Profile</a> |
+                        <a href="{{ route('user.logout') }}">Sign Out</a>
                     @else
-                    <a href="{{ route('user.login') }}">Sign In</a> |
-                    <a href="{{ route('user.register') }}">Create Account</a>
+                        <a href="{{ route('user.login') }}">Sign In</a> |
+                        <a href="{{ route('user.register') }}">Create Account</a>
                     @endif
                 </div>
                 <form action="#" id="moble-search">
@@ -413,9 +426,10 @@
                             <h3>CUSTOMER SERVICES</h3>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Orders & Returns</a></li>
                                     <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Return & Exchange</a></li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Orders & Returns</a>
+                                    </li>
+                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Payment Policy</a></li>
                                     <li><a href="#"><i class="fas fa-chevron-right"></i> Support Center</a></li>
                                     <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ's</a></li>
                                 </ul>
@@ -485,21 +499,21 @@
 
     <script>
         $('.form-image').dropify();
-    
+
         window.toastMessages = {
-        @if(Session::has('success'))
+            @if (Session::has('success'))
                 success: "{{ Session::get('success') }}",
-        @endif
-        @if(Session::has('error'))
+            @endif
+            @if (Session::has('error'))
                 error: "{{ Session::get('error') }}",
-        @endif
-        @if(Session::has('info'))
+            @endif
+            @if (Session::has('info'))
                 info: "{{ Session::get('info') }}",
-        @endif
-        @if(Session::has('warning'))
+            @endif
+            @if (Session::has('warning'))
                 warning: "{{ Session::get('warning') }}",
-        @endif
-            };
+            @endif
+        };
     </script>
 
     @yield('scripts')

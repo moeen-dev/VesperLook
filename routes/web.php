@@ -121,6 +121,13 @@ Route::prefix('administration')->group(function () {
             // For Privacy Policy
             Route::get('/privacy-policy', [App\Http\Controllers\Backend\PrivacyController::class, 'privacyPolicyIndex'])->name('privacy.policy');
             Route::post('/privacy-policy/update', [App\Http\Controllers\Backend\PrivacyController::class, 'privacyPolicyUpdate'])->name('privacy.policy.update');
+
+            // For Payment Policy
+            Route::get('/payment-policy', [App\Http\Controllers\Backend\PaymentPolicyController::class, 'paymentPolicyIndex'])->name('payment.policy');
+            Route::post('/payment-policy/update', [App\Http\Controllers\Backend\PaymentPolicyController::class, 'paymentPolicyUpdate'])->name('payment.policy.update');
+
+            // For Frequently Asked Question's
+            Route::resource('/faq', App\Http\Controllers\Backend\FaqController::class);
         });
     });
 });
