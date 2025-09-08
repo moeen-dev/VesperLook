@@ -143,7 +143,7 @@
                         <a href="{{ route('admin.setting.payment.policy') }}" class="nav-link">Payment Policy</a>
                     </li>
                     {{-- Frequently Asked Question --}}
-                    <li class="active">
+                    <li class="{{ Route::is('admin.setting.faq.index') ? 'active' : '' }}">
                         <a href="{{ route('admin.setting.faq.index') }}" class="nav-link"> FAQ's</a>
                     </li>
 

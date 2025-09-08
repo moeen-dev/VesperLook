@@ -13,7 +13,8 @@ class FaqController extends Controller
      */
     public function index()
     {
-        return view('backend.settings.faq.index');
+        $faqs = Faq::OrderBy('id', 'ASC')->paginate(10);
+        return view('backend.settings.faq.index', compact('faqs'));
     }
 
     /**
@@ -58,7 +59,9 @@ class FaqController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $faq = Faq::findOrFail(intval($id));
+
+        return view('backend.settings.faq.edit', compact('faq'));
     }
 
     /**
@@ -66,7 +69,29 @@ class FaqController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $faq = Faq::findOrFail($id);
+
+        if ($faq->id == $request->id) {
+            $request->validate([
+                'faq_question' => 'required|string',
+                'faq_answer' => 'required',
+            ]);
+        } else {
+            $request->validate([
+                'faq_question' => 'required|string|unique:faqs,faq_question',
+                'faq_answer' => 'required',
+            ]);
+        }
+
+        $input = $request->all();
+
+        $faqUpdate = $faq->update($input);
+
+        if ($faqUpdate) {
+            return redirect()->route('admin.setting.faq.index')->with('success', 'FAQ Updated Successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Please Try Again, Something Went Wrong!');
     }
 
     /**
@@ -74,6 +99,14 @@ class FaqController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $faq = Faq::findOrFail(intval($id));
+
+        if ($faq->count >= 0) {
+            return redirect()->route('admin.setting.faq.index')->with('error', 'You Can not Delete this FAQ, You have left only three faq.');
+        } else {
+            $faq->delete();
+        }
+
+        return redirect()->back()->with('success', 'FAQ Deleted Successfully.');
     }
 }

@@ -4,7 +4,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Payment Policy</h1>
+                <h1>Frequently Asked Question</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
                     <div class="breadcrumb-item">Add FAQ</div>
@@ -29,7 +29,7 @@
                                             Policy</label>
                                         <div class="col-sm-12 col-md-7">
                                             <input class="form-control" name="faq_question"
-                                                rows="5">{{ old('faq_question', $paymentPolicy->faq_question ?? '') }}</input>
+                                                value="{{ old('faq_question', $faq->faq_question ?? '') }}">
                                             @if ($errors->has('faq_question'))
                                                 <small class="text-danger">{{ $errors->first('faq_question') }}</small>
                                             @endif
@@ -40,7 +40,7 @@
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Privacy
                                             Policy</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <textarea class="form-control summernote" name="faq_answer" rows="5">{{ old('faq_answer', $paymentPolicy->faq_answer ?? '') }}</textarea>
+                                            <textarea class="form-control summernote" name="faq_answer" rows="5">{{ old('faq_answer', $faq->faq_answer ?? '') }}</textarea>
                                             @if ($errors->has('faq_answer'))
                                                 <small class="text-danger">{{ $errors->first('faq_answer') }}</small>
                                             @endif
