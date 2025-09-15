@@ -129,12 +129,11 @@
                                                                 title="Order Details"><i class="far fa-edit"></i>
                                                                 Details</a>
                                                         </td>
-
                                                     </tr>
                                                 @endforeach
                                             @else
                                                 <tr>
-                                                    <td colspan="9" class="text-center text-danger">
+                                                    <td colspan="8" class="text-center text-danger">
                                                         <p>No Data Found!</p>
                                                         <a href="{{ route('orders.index') }}" class="btn btn-primary">All
                                                             Order</a>

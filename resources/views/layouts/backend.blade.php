@@ -136,7 +136,7 @@
             $('#dataTable').DataTable({
                 "pageLength": 10,
                 "ordering": true,
-                "searcing": true,
+                "searching": true,
                 "lengthChange": true
             });
         });
