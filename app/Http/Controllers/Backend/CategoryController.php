@@ -13,14 +13,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-
-        $search = $request->input('search');
-
-        // Query to get categories, with search functionality
-        $categories = Category::when($search, function ($query, $search) {
-            return $query->where('category_name', 'like', "%$search%");
-        })->get();
-
+        $categories = Category::orderBy('id', 'ASC')->get();
         return view('backend.category.index', compact('categories'));
     }
 

@@ -14,13 +14,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->input('search');
-
-        // Query to get Products, with search functionality
-        $products = Product::when($search, function ($query, $search) {
-            return $query->where('sku', 'like', "%$search%");
-        })->paginate(10);
-
+        $products = Product::orderBy('id', 'ASC')->get();
         return view('backend.product.index', compact('products'));
     }
 
@@ -167,7 +161,7 @@ class ProductController extends Controller
 
         $input['sizes'] = $request->has('sizes') ? $request->input('sizes') : [];
         $input['colors'] = $request->has('colors') ? $request->input('colors') : [];
-        
+
         // Handle Image Uploads for each field
         if ($request->hasFile('image1')) {
             // Delete the old image if it exists

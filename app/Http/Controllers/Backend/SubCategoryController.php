@@ -14,17 +14,7 @@ class SubCategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->input('search');
-
-        // Query to get categories, with search functionality
-        $subcategories = SubCategory::with('category')
-            ->when($search, function ($query, $search) {
-                return $query->whereHas('category', function ($q) use ($search) {
-                    $q->where('category_name', 'like', "%$search%");
-                });
-            })
-            ->paginate(10);
-
+        $subcategories = SubCategory::orderBy('id', 'ASC')->get();
         return view('backend.subcategory.index', compact('subcategories'));
     }
 

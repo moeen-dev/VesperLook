@@ -26,7 +26,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered">
+                                    <table class="table table-bordered table-striped" id="dataTable">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -74,11 +74,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                            <div class="card-footer text-right">
-                                <nav class="d-inline-block">
-                                    {{ $faqs->withQueryString()->links('pagination::bootstrap-5') }}
-                                </nav>
                             </div>
                         </div>
                     </div>

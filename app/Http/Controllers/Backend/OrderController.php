@@ -13,18 +13,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Order::query();
-
-        if ($request->filled('search')) {
-            $query->where('id', 'like', '%' . $request->search . '%');
-        }
-
-        if ($request->filled('delivery_status')) {
-            $query->where('delivery_status', $request->delivery_status);
-        }
-        
-        $orders = $query->latest()->paginate(10);
-
+        $orders = Order::orderBy('id', 'ASC')->get();
         return view('backend.order.index', compact('orders'));
     }
 

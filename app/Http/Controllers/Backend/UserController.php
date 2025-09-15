@@ -15,14 +15,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
-        $search = $request->input('search');
-
-        // Query to get User, with search functionality
-        $users = User::when($search, function ($query, $search) {
-            return $query->where('email', 'like', "%$search%");
-        })->paginate(10);
-
+        $users = User::orderBy('id', 'ASC')->get();
         return view('backend.user.index', compact('users'));
     }
 
