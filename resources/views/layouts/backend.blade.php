@@ -23,10 +23,13 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/backend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/assets/css/components.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/backend/assets/modules/dropify/css/dropify.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/assets/modules/dropify/css/dropify.css') }}">
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="{{ asset('assets/backend/assets/modules/codemirror/lib/codemirror.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/backend/assets/modules/codemirror/theme/duotone-dark.css') }}">
+    <!-- DataTables CSS (Bootstrap 4) -->
+    <link rel="stylesheet"
+        href="{{ asset('assets/backend/assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
@@ -88,8 +91,7 @@
     <script src="{{ asset('assets/backend/assets/modules/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('assets/backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
     <script src="{{ asset('assets/backend/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
-    <script
-        src="{{ asset('assets/backend/assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}">
+    <script src="{{ asset('assets/backend/assets/modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js') }}">
     </script>
     <script src="{{ asset('assets/backend/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 
@@ -109,19 +111,35 @@
     <script src="{{ asset('assets/backend/assets/modules/codemirror/lib/codemirror.js') }}"></script>
     <script src="{{ asset('assets/backend/assets/modules/codemirror/mode/javascript/javascript.js') }}"></script>
 
+    <!-- DataTables JS (Bootstrap 4) -->
+    <script src="{{ asset('assets/backend/assets/modules/datatables/DataTables-1.10.16/js/jquery.dataTables.min.js') }}">
+    </script>
+    <script
+        src="{{ asset('assets/backend/assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    </script>
+
+
     <!-- custom js -->
     <script>
         // Dropify Image
         $('.form-image').dropify();
-        
+
         // Alert Notification
         window.flashMessages = {
-        success: @json(session('success')),
-        error: @json(session('error')),
-        info: @json(session('info')),
-        warning: @json(session('warning')),
+            success: @json(session('success')),
+            error: @json(session('error')),
+            info: @json(session('info')),
+            warning: @json(session('warning')),
         };
-        
+
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                "pageLength": 10,
+                "ordering": true,
+                "searcing": true,
+                "lengthChange": true
+            });
+        });
     </script>
 
     @yield('scripts')
