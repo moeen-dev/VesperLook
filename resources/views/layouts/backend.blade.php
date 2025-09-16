@@ -136,6 +136,7 @@
             $('#dataTable').DataTable({
                 "paging": true,
                 "pageLength": 10,
+                "lengthMenu": [5, 10, 25, 50, 100],
                 "ordering": true,
                 "searching": true,
                 "lengthChange": true,
