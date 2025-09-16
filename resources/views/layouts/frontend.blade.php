@@ -450,7 +450,7 @@
                 <div class="footer-bottom">
                     <div class="row">
                         <div class="col-md-12 col-lg-6 col-xl-6 order-2 order-lg-1">
-                            <p>Copyright © 2025<span> Vesper Look </span> • Developed by <a
+                            <p>Copyright © 2024<span> Vesper Look </span> • Developed by <a
                                     href="https://facebook.com/mdmoeenuddinn">Moeen Uddin</a></p>
                         </div>
                         <!-- /.col-xl-6 -->
