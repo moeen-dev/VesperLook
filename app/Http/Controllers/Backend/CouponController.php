@@ -14,7 +14,7 @@ class CouponController extends Controller
      */
     public function index()
     {
-        $discounts = Discount::orderBy('id', 'ASC')->paginate(10);
+        $discounts = Discount::orderBy('id', 'ASC')->get();
         return view('backend.discount.index', compact('discounts'));
     }
 
