@@ -134,10 +134,12 @@
 
         $(document).ready(function() {
             $('#dataTable').DataTable({
+                "paging": true,
                 "pageLength": 10,
                 "ordering": true,
                 "searching": true,
-                "lengthChange": true
+                "lengthChange": true,
+                "info": true
             });
         });
     </script>
