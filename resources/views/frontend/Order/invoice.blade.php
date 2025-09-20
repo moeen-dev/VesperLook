@@ -163,7 +163,7 @@
 <body>
     <header class="clearfix">
         <div id="logo">
-            <img src="{{ url('assets/frontend/media/images/logo.png') }}">
+            <img src="{{ public_path('assets/frontend/media/images/logo.png') }}">
             {{-- <h2>{{ config('app.name') }}</h2> --}}
         </div>
         <h1>INVOICE NO #{{ $order->id }}</h1>
@@ -194,23 +194,23 @@
             </thead>
             <tbody>
                 @foreach ($order->items as $item)
-                <tr>
-                    <td>{{ $loop->index + 1 }}</td>
-                    <td class="service text-left">{{ $item->title }}</td>
-                    <td class="unit text-center">{{ $item->unit_price }} TK</td>
-                    <td class="desc text-center">{{ $item->quantity }}</td>
-                    <td class="qty text-right">{{ $item->total_price }} TK</td>
-                </tr>
+                    <tr>
+                        <td>{{ $loop->index + 1 }}</td>
+                        <td class="service text-left">{{ $item->title }}</td>
+                        <td class="unit text-center">{{ $item->unit_price }} TK</td>
+                        <td class="desc text-center">{{ $item->quantity }}</td>
+                        <td class="qty text-right">{{ $item->total_price }} TK</td>
+                    </tr>
                 @endforeach
                 <tr>
                     <td colspan="4">SUBTOTAL</td>
                     <td class="total text-right">{{ number_format($order->subtotal, 2) }} TK</td>
                 </tr>
-                @if($order->discount > 0)
-                <tr>
-                    <td colspan="4">Discount</td>
-                    <td class="total text-right">- {{ number_format($order->discount, 2) }} TK</td>
-                </tr>
+                @if ($order->discount > 0)
+                    <tr>
+                        <td colspan="4">Discount</td>
+                        <td class="total text-right">- {{ number_format($order->discount, 2) }} TK</td>
+                    </tr>
                 @endif
                 <tr>
                     <td colspan="4">Delivery</td>
