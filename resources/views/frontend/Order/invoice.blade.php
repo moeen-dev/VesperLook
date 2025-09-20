@@ -161,14 +161,15 @@
 </head>
 
 <body>
+    <div
+        style="position: fixed; top: 40%; left: 20%; width: 100%; 
+                opacity: 0.1; font-size: 100px; color: #000; 
+                transform: rotate(-30deg); z-index: -1;">
+        {{ config('app.name') }}
+    </div>
+
     <header class="clearfix">
-        <div id="logo">
-            <h2>{{ config('app.name') }}</h2>
-        </div>
         <h1>INVOICE NO #{{ $order->id }}</h1>
-        <div id="logo">
-            <h2>{{ config('app.name') }}</h2>
-        </div>
         <div id="company" class="clearfix">
             <div>{{ config('app.name') }}</div>
             <div>House #05, Road #05, Sector #12<br /> Uttara, Dhaka-1230, Bangladesh</div>
