@@ -13,7 +13,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $orders = Order::orderBy('id', 'ASC')->get();
+        $orders = Order::orderBy('id', 'DESC')->get();
         return view('backend.order.index', compact('orders'));
     }
 

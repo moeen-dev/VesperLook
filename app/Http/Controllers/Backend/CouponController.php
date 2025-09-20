@@ -14,7 +14,7 @@ class CouponController extends Controller
      */
     public function index()
     {
-        $discounts = Discount::orderBy('id', 'ASC')->get();
+        $discounts = Discount::orderBy('id', 'DESC')->get();
         return view('backend.discount.index', compact('discounts'));
     }
 
