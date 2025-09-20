@@ -163,7 +163,9 @@
 <body>
     <header class="clearfix">
         <div id="logo">
-            <h2>{{ config('app.name') }}</h2>
+            <h2
+                style="font-family: DejaVu Sans, sans-serif; font-size:24px; font-weight:bold; margin:0; padding:0; text-align:center;">
+                {{ config('app.name') }}</h2>
         </div>
         <h1>INVOICE NO #{{ $order->id }}</h1>
         <div id="company" class="clearfix">
