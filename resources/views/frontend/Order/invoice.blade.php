@@ -41,7 +41,7 @@
         }
 
         .logo img {
-            width: 100px;
+            width: 150px;
         }
 
         h1 {
