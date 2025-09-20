@@ -273,15 +273,13 @@ class ShoppingCart extends Component
 
         $filename = 'invoice-order-' . $order->id . '-' . Str::random(5) . '.pdf';
 
-        $directory = 'private/invoices';
-
-        $path = $directory . '/' . $filename;
-
-        if (!Storage::exists($directory)) {
-            Storage::makeDirectory($directory);
+        $directoryPath = storage_path('app/private/invoices');
+        if (!file_exists($directoryPath)) {
+            mkdir($directoryPath, 0755, true);
         }
+        $path = $directoryPath . '/' . $filename;
+        file_put_contents($path, $pdf->output());
 
-        Storage::put($path, $pdf->output());
 
         Mail::to($order->email)->send(new OrderConfirmationMail($order, $path));
 
