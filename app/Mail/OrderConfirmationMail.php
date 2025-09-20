@@ -42,6 +42,6 @@ class OrderConfirmationMail extends Mailable
                 'supportPhone' => $supportPhone,
                 'companyName' => $companyName,
             ])->render())
-            ->attach(storage_path('app/' . $this->attachmentPath));
+            ->attach($this->attachmentPath);
     }
 }
