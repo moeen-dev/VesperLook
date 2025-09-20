@@ -163,11 +163,12 @@
 <body>
     <header class="clearfix">
         <div id="logo">
-            <h2
-                style="font-family: DejaVu Sans, sans-serif; font-size:24px; font-weight:bold; margin:0; padding:0; text-align:center;">
-                {{ config('app.name') }}</h2>
+            <h2>{{ config('app.name') }}</h2>
         </div>
         <h1>INVOICE NO #{{ $order->id }}</h1>
+        <div id="logo">
+            <h2>{{ config('app.name') }}</h2>
+        </div>
         <div id="company" class="clearfix">
             <div>{{ config('app.name') }}</div>
             <div>House #05, Road #05, Sector #12<br /> Uttara, Dhaka-1230, Bangladesh</div>
