@@ -163,7 +163,8 @@
 <body>
     <header class="clearfix">
         <div id="logo">
-            <img src="{{ public_path('assets/frontend/media/images/logo.png') }}">
+            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('assets/frontend/media/images/logo.png'))) }}"
+                width="150" alt="Logo">
             {{-- <h2>{{ config('app.name') }}</h2> --}}
         </div>
         <h1>INVOICE NO #{{ $order->id }}</h1>
