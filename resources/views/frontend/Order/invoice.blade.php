@@ -35,12 +35,12 @@
             margin-bottom: 30px;
         }
 
-        #logo {
+        .logo {
             text-align: center;
             margin-bottom: 10px;
         }
 
-        #logo img {
+        .logo img {
             width: 90px;
         }
 
@@ -161,13 +161,6 @@
 </head>
 
 <body>
-    <div
-        style="position: fixed; top: 40%; left: 20%; width: 100%; 
-                opacity: 0.1; font-size: 100px; color: #000; 
-                transform: rotate(-30deg); z-index: -1;">
-        {{ config('app.name') }}
-    </div>
-
     <header class="clearfix">
         <h1>INVOICE NO #{{ $order->id }}</h1>
         <div id="company" class="clearfix">
