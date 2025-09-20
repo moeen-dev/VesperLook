@@ -41,7 +41,7 @@
         }
 
         .logo img {
-            width: 90px;
+            width: 100px;
         }
 
         h1 {
@@ -162,6 +162,9 @@
 
 <body>
     <header class="clearfix">
+        <div class="logo">
+            <img src="{{ public_path('assets/frontend/media/images/logo.png') }}">
+        </div>
         <h1>INVOICE NO #{{ $order->id }}</h1>
         <div id="company" class="clearfix">
             <div>{{ config('app.name') }}</div>
