@@ -23,6 +23,9 @@ Route::get('/product/quick-view/{id}', [App\Http\Controllers\Frontend\ModalContr
 Route::get('/contact-us', [App\Http\Controllers\Frontend\ContactController::class, 'index'])->name('contact');
 Route::post('/contact-us/submitting', [App\Http\Controllers\Frontend\ContactController::class, 'contactSubmit'])->name('contact.submit');
 
+// Controller for Frontend About us
+Route::get('/about-us', [App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('about');
+
 // Controller for Newsletter 
 Route::post('/newsletter/subscribe', [App\Http\Controllers\Frontend\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::post('/newsletter/hide-popup', [App\Http\Controllers\Frontend\NewsletterController::class, 'hidePopup'])->name('newsletter.hidePopup');

@@ -14,9 +14,6 @@
 
     @livewireStyles
 
-    <style>
-
-    </style>
 
 </head>
 
@@ -154,6 +151,14 @@
                     <div class="col-lg-6 col-xl-2 order-lg-2 order-xl-3">
                         <div class="header-right-menu">
                             <ul>
+                                {{-- <li>
+                                    <select class="custom-select">
+                                        <option selected="">ENG</option>
+                                        <option value="1">FRE</option>
+                                        <option value="2">CHI</option>
+                                    </select>
+                                </li> --}}
+
                                 <li class="top-search style-two"><a href="javascript:void(0)"><i
                                             class="fi fi-rs-search"></i></a>
                                     <input type="text" class="search-input" placeholder="Search">
@@ -411,11 +416,16 @@
                             <h3>Quick Links</h3>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Collection</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Our Shop</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                                    <li><a href="{{ route('home') }}"><i class="fas fa-chevron-right"></i> Home</a>
+                                    </li>
+                                    <li><a href="{{ route('collection') }}"><i class="fas fa-chevron-right"></i>
+                                            Collection</a></li>
+                                    <li><a href="{{ route('shop') }}"><i class="fas fa-chevron-right"></i> Our
+                                            Shop</a></li>
+                                    <li><a href="{{ route('contact') }}"><i class="fas fa-chevron-right"></i> Contact
+                                            Us</a></li>
+                                    <li><a href="{{ route('about') }}"><i class="fas fa-chevron-right"></i> About
+                                            Us</a></li>
                                 </ul>
                             </div>
                         </div>
