@@ -26,6 +26,9 @@ Route::post('/contact-us/submitting', [App\Http\Controllers\Frontend\ContactCont
 // Controller for Frontend About us
 Route::get('/about-us', [App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('about');
 
+// Controller for Privacy Policy Frontend
+Route::get('/privacy-policy', [App\Http\Controllers\Frontend\PrivacyController::class, 'index'])->name('frontend.privacy');
+
 // Controller for Newsletter 
 Route::post('/newsletter/subscribe', [App\Http\Controllers\Frontend\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::post('/newsletter/hide-popup', [App\Http\Controllers\Frontend\NewsletterController::class, 'hidePopup'])->name('newsletter.hidePopup');

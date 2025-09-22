@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
-@section('title', 'About Us')
+@section('title', 'Privacy Policy')
 @section('content')
 
     <section class="breadcrumb-area">
@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bc-inner">
-                        <p><a href="{{ route('home') }}">Home |</a> About Us</p>
+                        <p><a href="{{ route('home') }}">Home |</a> Privacy Policy</p>
                     </div>
                 </div>
                 <!-- /.col-xl-12 -->
@@ -20,11 +20,11 @@
     <section class="contact-area">
         <div class="container-fluid custom-container">
             <div class="section-heading pb-30">
-                <h3>About <span>us</span></h3>
+                <h3>Privacy <span>Policy</span></h3>
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-8 col-xl-8">
-                    {!! $about->about_desc ?? '' !!}
+                    {!! $privacyPolicy->privacy_policy ?? '' !!}
                 </div>
             </div>
             <!-- /.row end -->
