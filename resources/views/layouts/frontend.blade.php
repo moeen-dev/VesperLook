@@ -436,10 +436,14 @@
                             <h3>CUSTOMER SERVICES</h3>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Orders & Returns</a>
+                                    <li><a href="{{ route('frontend.privacy') }}"><i
+                                                class="fas fa-chevron-right"></i>
+                                            Privacy Policy</a></li>
+                                    <li><a href="{{ route('frontend.order.return') }}"><i
+                                                class="fas fa-chevron-right"></i> Orders & Returns</a>
                                     </li>
-                                    <li><a href="#"><i class="fas fa-chevron-right"></i> Payment Policy</a></li>
+                                    <li><a href="{{ route('frontend.payment.policy') }}"><i
+                                                class="fas fa-chevron-right"></i> Payment Policy</a></li>
                                     <li><a href="#"><i class="fas fa-chevron-right"></i> Support Center</a></li>
                                     <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ's</a></li>
                                 </ul>

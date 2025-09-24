@@ -26,8 +26,15 @@ Route::post('/contact-us/submitting', [App\Http\Controllers\Frontend\ContactCont
 // Controller for Frontend About us
 Route::get('/about-us', [App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('about');
 
-// Controller for Privacy Policy Frontend
+// Controller for Frontend Privacy Policy Frontend
 Route::get('/privacy-policy', [App\Http\Controllers\Frontend\PrivacyController::class, 'index'])->name('frontend.privacy');
+
+// Controller for Frontend Order & Returns
+Route::get('/order-return-policy', [App\Http\Controllers\Frontend\OrderReturnController::class, 'index'])->name('frontend.order.return');
+
+// Controller for Frontend Payment Policy
+Route::get('/payment-policy', [App\Http\Controllers\Frontend\PaymentPolicyController::class, 'index'])->name('frontend.payment.policy');
+
 
 // Controller for Newsletter 
 Route::post('/newsletter/subscribe', [App\Http\Controllers\Frontend\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
