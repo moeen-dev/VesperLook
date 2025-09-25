@@ -445,8 +445,8 @@
                                     <li><a href="{{ route('frontend.payment.policy') }}"><i
                                                 class="fas fa-chevron-right"></i> Payment Policy</a></li>
                                     <li><a href="#"><i class="fas fa-chevron-right"></i> Support Center</a></li>
-                                    <li><a href="{{ route('frontend.faq') }}"><i class="fas fa-chevron-right"></i>
-                                            FAQ's</a></li>
+                                    {{-- <li><a href="{{ route('frontend.faq') }}"><i class="fas fa-chevron-right"></i>
+                                            FAQ's</a></li> --}}
                                 </ul>
                             </div>
                         </div>
