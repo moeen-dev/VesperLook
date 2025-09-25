@@ -24,16 +24,18 @@ Route::get('/contact-us', [App\Http\Controllers\Frontend\ContactController::clas
 Route::post('/contact-us/submitting', [App\Http\Controllers\Frontend\ContactController::class, 'contactSubmit'])->name('contact.submit');
 
 // Controller for Frontend About us
-Route::get('/about-us', [App\Http\Controllers\Frontend\AboutController::class, 'index'])->name('about');
+Route::get('/about-us', [App\Http\Controllers\Frontend\VendorController::class, 'about'])->name('about');
 
 // Controller for Frontend Privacy Policy Frontend
-Route::get('/privacy-policy', [App\Http\Controllers\Frontend\PrivacyController::class, 'index'])->name('frontend.privacy');
+Route::get('/privacy-policy', [App\Http\Controllers\Frontend\VendorController::class, 'privacyPolicy'])->name('frontend.privacy');
 
 // Controller for Frontend Order & Returns
-Route::get('/order-return-policy', [App\Http\Controllers\Frontend\OrderReturnController::class, 'index'])->name('frontend.order.return');
+Route::get('/order-return-policy', [App\Http\Controllers\Frontend\VendorController::class, 'orderReturn'])->name('frontend.order.return');
 
 // Controller for Frontend Payment Policy
-Route::get('/payment-policy', [App\Http\Controllers\Frontend\PaymentPolicyController::class, 'index'])->name('frontend.payment.policy');
+Route::get('/payment-policy', [App\Http\Controllers\Frontend\VendorController::class, 'paymentPolicy'])->name('frontend.payment.policy');
+// Controller for Frontend FAQs
+// Route::get('/frequently-asked-questions', [App\Http\Controllers\Frontend\VendorController::class, 'faq'])->name('frontend.faq');
 
 
 // Controller for Newsletter 

@@ -12,7 +12,7 @@ class Faq extends Model
     /**
      * The attributes that are mass assignable.
      * 
-     * @var arry<int, sgring>
+     * @var array<int, sgring>
      */
     protected $fillable = [
         'faq_question',
