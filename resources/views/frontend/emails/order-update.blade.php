@@ -1,8 +1,8 @@
 <div style="font-family: Arial, sans-serif; font-size: 16px; color: #333;">
     <p>Hi <strong>{{ $order->name }}</strong>,</p>
 
-    <p>🎉 Thank you for your order! We’re excited to let you know that we have received your purchase and it is now
-        being processed.</p>
+    <p>🎉 Your order status updated to <strong style="text-transform: capitalize">{{ $order->delivery_status }}</strong>
+    </p>
 
     <h3>Order Details:</h3>
     <ul>

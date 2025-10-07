@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Order;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use App\Mail\OrderStatusUpdatedMail;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -65,6 +67,11 @@ class OrderController extends Controller
 
         $order->delivery_status = $request->input('delivery_status');
         $order->save();
+
+        // send email to the order user
+        if ($order->user && $order->user->email) {
+            Mail::to($order->user->email)->send(new OrderStatusUpdatedMail($order));
+        }
 
         return redirect()->back()->with('success', 'Delivery status updated successfully!');
     }
