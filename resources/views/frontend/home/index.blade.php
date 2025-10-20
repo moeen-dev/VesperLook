@@ -53,7 +53,7 @@
 <section class="main-product">
     <div class="container container-two">
         <div class="section-heading">
-            <h3>Welcome to <span>product</span></h3>
+            <h3>Latest <span>product</span></h3>
         </div>
         <!-- /.section-heading-->
         <div class="row">
@@ -234,7 +234,7 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="row">
-                                @foreach($products->take(8) as $product)
+                                @foreach($bestSellers as $product)
                                 <div class="col-sm-6 col-xl-3">
                                     <div class="sin-product style-two {{ $product->quantity <= 0 ? 'muted' : '' }}">
                                         <div class="pro-img">
@@ -302,10 +302,6 @@
                         <!-- /.tab-pane -->
                     </div>
                     <!-- /.tab-content -->
-                    <div class="load-more-wrapper">
-                        <a href="{{ route('shop') }}" class="btn-two">Go to Shop</a>
-                    </div>
-                    <!-- /.load-more-wrapper -->
                 </div>
                 <!-- /.shop-content -->
             </div>
