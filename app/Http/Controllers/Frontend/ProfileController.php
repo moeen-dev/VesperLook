@@ -55,9 +55,10 @@ class ProfileController extends Controller
                 unlink(public_path('upload/images/' . $user->image));
             }
             $file = $request->file('image');
-            $filename = time() . '-image-' . $file->getClientOriginalName();
-            $file->move(public_path('upload/images/'), $filename);
-            $user->image = $filename; // << Assign to user
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '-image-' . $extension;
+            $file->move('upload/images/', $filename);
+            $input['image'] = $filename;
         }
 
         $user->save(); 
