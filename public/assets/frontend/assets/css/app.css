@@ -2049,13 +2049,13 @@ a.btn-two::after {
 }
 
 .sin-product.style-two .pro-icon ul li a,
-.sin-product.style-one .pro-icon ul li a {
+.pro-tab-filter .sin-product.style-one .pro-icon ul li a {
     color: #585858;
     font-size: 23px;
 }
 
 .sin-product.style-two .pro-icon ul li a:hover,
-.sin-product.style-one .pro-icon ul li a:hover{
+.pro-tab-filter .sin-product.style-one .pro-icon ul li a:hover{
     color: #d19e66;
 }
 
