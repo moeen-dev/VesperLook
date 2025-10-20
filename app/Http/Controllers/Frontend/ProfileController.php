@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -56,7 +57,8 @@ class ProfileController extends Controller
             }
             $file = $request->file('image');
             $extension = $file->getClientOriginalName();
-            $filename = time() . '-image-' . $extension;
+            $safeUsername = Str::slug($user->name);
+            $filename = 'img-' . $safeUsername. '-' . time() . $extension;
             $file->move('upload/images/', $filename);
             $input['image'] = $filename;
         }
