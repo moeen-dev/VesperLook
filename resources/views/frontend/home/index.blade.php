@@ -57,46 +57,87 @@
         </div>
         <!-- /.section-heading-->
         <div class="row">
-            <div class="col-xl-12 ">
-                <div class="pro-tab-filter">
-                    <ul class="pro-tab-button">
-                        <li class="filter active" data-filter="*">ALL</li>
-                        <li class="filter" data-filter=".two">Accessories</li>
-                        <li class="filter" data-filter=".three">Men's clothing</li>
-                        <li class="filter" data-filter=".four">Kids clothing</li>
-                        <li class="filter" data-filter=".five">Women dresses</li>
-                    </ul>
-                    <div class="grid row" style="position: relative; height: 941.5px;">
-                        @foreach($products->take(8) as $product)
-                        <!-- single product -->
-                        <div class="grid-item two col-12 col-md-6  col-lg-4 col-xl-3"
-                            style="position: absolute; left: 0px; top: 0px;">
-                            <div class="sin-product style-one">
-                                <div class="pro-img">
-                                    <img src="{{ url('upload/images', $product->image1) }}" alt="{{ $product->title }}">
-                                </div>
-                                <div class="mid-wrapper">
-                                    <h5 class="pro-title"><a href="product.html">Embellished print dress</a></h5>
-                                    <span>$60.00</span>
+            <div class="order-lg-2 col-lg-12 col-xl-12">
+
+                <!-- /.shop-sorting-area -->
+                <div class="shop-content shop-four-grid">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                @foreach($products->take(8) as $product)
+                                <div class="col-sm-6 col-xl-3">
+                                    <div class="sin-product style-two {{ $product->quantity <= 0 ? 'muted' : '' }}">
+                                        <div class="pro-img">
+                                            <img src="{{ url('upload/images', $product->image1) }}"
+                                                alt="{{ $product->title }}">
+                                        </div>
+                                        @if ($product->is_new && $product->created_at->diffInDays(now()) <= 10) <span
+                                            class="new-tag">NEW!</span>
+                                            @endif
+                                            @if($product->quantity > 0)
+                                            <span class="is-stock">In Stock</span>
+                                            @else
+                                            <span class="is-out-stock">Out of Stock</span>
+                                            @endif
+                                            <div class="mid-wrapper">
+                                                <h5 class="pro-title"><a
+                                                        href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}">{{
+                                                        $product->title }}</a></h5>
+                                                <div class="color-variation">
+                                                    <ul>
+                                                        @if (!empty($product->colors) && is_array($product->colors))
+                                                        @foreach ($product->colors as $color)
+                                                        @if (!empty($color))
+                                                        <li><i class="fas fa-circle" style="color: <?= $color; ?>;"></i>
+                                                        </li>
+                                                        @endif
+                                                        @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </div>
+                                                <p>{{ $product->subCategory->subcategory_name }} / <span><strong>Price:
+                                                        </strong>$ {{ $product->price }}</span></p>
+                                            </div>
+                                            <div class="icon-wrapper">
+                                                <div class="pro-icon">
+                                                    <ul>
+                                                        <li>
+                                                            <a class="trigger" href="#" data-id="{{ $product->id }}"
+                                                                title="Quick View" role="button">
+                                                                Quick View
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            @if($product->quantity > 0)
+                                            <div>
+                                                <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}"
+                                                    class="btn-two w-100">Buy Now</a>
+                                            </div>
+                                            @else
+                                            <div>
+                                                <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}"
+                                                    class="btn-two disabled w-100">Buy Now</a>
+                                            </div>
+                                            @endif
+
+                                    </div>
+                                    <!-- /.sin-product -->
                                 </div>
 
-                                <div class="pro-icon">
-                                    <div class="pro-icon">
-                                        <ul>
-                                            <li>
-                                                <a class="trigger" href="#" data-id="{{ $product->id }}"
-                                                    title="Quick View" role="button">
-                                                    Quick View
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                        @endforeach
+                        <!-- /.tab-pane -->
                     </div>
+                    <!-- /.tab-content -->
+                    <div class="load-more-wrapper">
+                        <a href="{{ route('shop') }}" class="btn-two">Go to Shop</a>
+                    </div>
+                    <!-- /.load-more-wrapper -->
                 </div>
+                <!-- /.shop-content -->
             </div>
         </div>
         <!-- Row End -->
@@ -179,94 +220,99 @@
 <!-- /.feature-area -->
 
 @if($products->count() > 0 )
-<section class="shop-area">
-    <div class="container-fluid custom-container">
+<section class="main-product">
+    <div class="container container-two">
         <div class="section-heading">
-            <h3>Our Recent <span>product</span></h3>
+            <h3>Best Selling <span>product</span></h3>
         </div>
         <!-- /.section-heading-->
         <div class="row">
-            <div class="col-xl-12 ">
-                <div class="grid row">
-                    @foreach ($products->take(8) as $product)
-                    <div class="grid-item three col-12 col-md-6  col-lg-4 col-xl-3">
-                        <div class="sin-product style-two">
-                            <div class="pro-img">
-                                <img src="{{ url('upload/images', $product->image1) }}" alt="{{ $product->title }}">
-                            </div>
-                            <div>
-                                @php
-                                $createdAt = \Carbon\Carbon::parse($product->created_at);
-                                $daysAgo = floor($createdAt->diffInDays(now()));
-                                @endphp
+            <div class="order-lg-2 col-lg-12 col-xl-12">
 
-                                <span class="new-tag">{{ $daysAgo >= 1 ? $daysAgo . ' days ago' : 'Now' }}</span>
-                            </div>
-                            <div class="mid-wrapper">
-                                <h5 class="pro-title"><a
-                                        href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}">{{
-                                        $product->title }}</a></h5>
-                                <div class="color-variation">
-                                    <ul>
-                                        @if (!empty($product->colors) && is_array($product->colors))
-                                        @foreach ($product->colors as $color)
-                                        @if (!empty($color))
-                                        <li><i class="fas fa-circle" style="color: <?= $color; ?>;"></i></li>
-                                        @endif
-                                        @endforeach
-                                        @endif
-                                    </ul>
-                                </div>
-                                <p class="d-flex justify-content-between mt-3">
-                                    <span class="fw-bold"><strong>Price:</strong> $ {{ $product->price }}</span>
+                <!-- /.shop-sorting-area -->
+                <div class="shop-content shop-four-grid">
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                @foreach($products->take(8) as $product)
+                                <div class="col-sm-6 col-xl-3">
+                                    <div class="sin-product style-two {{ $product->quantity <= 0 ? 'muted' : '' }}">
+                                        <div class="pro-img">
+                                            <img src="{{ url('upload/images', $product->image1) }}"
+                                                alt="{{ $product->title }}">
+                                        </div>
+                                        @if ($product->is_new && $product->created_at->diffInDays(now()) <= 10) <span
+                                            class="new-tag">NEW!</span>
+                                            @endif
+                                            @if($product->quantity > 0)
+                                            <span class="is-stock">In Stock</span>
+                                            @else
+                                            <span class="is-out-stock">Out of Stock</span>
+                                            @endif
+                                            <div class="mid-wrapper">
+                                                <h5 class="pro-title"><a
+                                                        href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}">{{
+                                                        $product->title }}</a></h5>
+                                                <div class="color-variation">
+                                                    <ul>
+                                                        @if (!empty($product->colors) && is_array($product->colors))
+                                                        @foreach ($product->colors as $color)
+                                                        @if (!empty($color))
+                                                        <li><i class="fas fa-circle" style="color: <?= $color; ?>;"></i>
+                                                        </li>
+                                                        @endif
+                                                        @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </div>
+                                                <p>{{ $product->subCategory->subcategory_name }} / <span><strong>Price:
+                                                        </strong>$ {{ $product->price }}</span></p>
+                                            </div>
+                                            <div class="icon-wrapper">
+                                                <div class="pro-icon">
+                                                    <ul>
+                                                        <li>
+                                                            <a class="trigger" href="#" data-id="{{ $product->id }}"
+                                                                title="Quick View" role="button">
+                                                                Quick View
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            @if($product->quantity > 0)
+                                            <div>
+                                                <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}"
+                                                    class="btn-two w-100">Buy Now</a>
+                                            </div>
+                                            @else
+                                            <div>
+                                                <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}"
+                                                    class="btn-two disabled w-100">Buy Now</a>
+                                            </div>
+                                            @endif
 
-                                    @if($product->quantity > 0)
-                                    <span class="badge bg-secondary ms-2 small text-white ml-5">In Stock</span>
-                                    @else
-                                    <span class="badge bg-danger ms-2 small text-white ml-3">Out of Stock</span>
-                                    @endif
-                                </p>
+                                    </div>
+                                    <!-- /.sin-product -->
+                                </div>
 
-                                @if($product->quantity > 0)
-                                <div>
-                                    <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}"
-                                        class="btn-two w-100">Buy Now</a>
-                                </div>
-                                @else
-                                <div>
-                                    <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}"
-                                        class="btn-two disabled w-100">Buy Now</a>
-                                </div>
-                                @endif
-
-                            </div>
-                            <div class="icon-wrapper">
-                                <div class="pro-icon">
-                                    <ul>
-                                        {{-- <li><a href="#"><i class="flaticon-valentines-heart"></i></a></li> --}}
-                                        <li>
-                                            <a class="trigger" href="#" data-id="{{ $product->id }}" title="Quick View"
-                                                role="button">
-                                                {{-- <i class="flaticon-eye"></i> --}}Quick View
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="add-to-cart">
-                                    <!-- <a href="{{ route('cart.add', ['id' => $product->id, 'quantity' => 1]) }}">add to cart</a> -->
-                                </div>
+                                @endforeach
                             </div>
                         </div>
+                        <!-- /.tab-pane -->
                     </div>
-                    @endforeach
+                    <!-- /.tab-content -->
+                    <div class="load-more-wrapper">
+                        <a href="{{ route('shop') }}" class="btn-two">Go to Shop</a>
+                    </div>
+                    <!-- /.load-more-wrapper -->
                 </div>
-
+                <!-- /.shop-content -->
             </div>
         </div>
+        <!-- Row End -->
     </div>
-    <!-- Row End -->
-    </div>
-    <!-- Container -->
+    <!-- Container  -->
 </section>
 @endif
 
