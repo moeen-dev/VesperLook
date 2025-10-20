@@ -63,7 +63,7 @@ class ProfileController extends Controller
             $input['image'] = $filename;
         }
 
-        $user->save(); 
+        $user->update(); 
 
         return redirect()->route('user.profile')->with('success', 'Profile updated successfully!');
     }
