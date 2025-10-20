@@ -1880,13 +1880,13 @@ a.btn-two::after {
     color: #d19e66;
 }
 
-.sin-product span {
+/* .sin-product span {
     color: #d19e66;
     font-family: "Work Sans", sans-serif;
     font-weight: 400;
     float: right;
     font-size: 18px;
-}
+} */
 
 .sin-product .pro-img {
     position: relative;
