@@ -2048,12 +2048,14 @@ a.btn-two::after {
     top: 0;
 }
 
-.sin-product.style-two .pro-icon ul li a {
+.sin-product.style-two .pro-icon ul li a,
+.sin-product.style-one .pro-icon ul li a {
     color: #585858;
     font-size: 23px;
 }
 
-.sin-product.style-two .pro-icon ul li a:hover {
+.sin-product.style-two .pro-icon ul li a:hover,
+.sin-product.style-one .pro-icon ul li a:hover{
     color: #d19e66;
 }
 
