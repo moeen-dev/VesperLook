@@ -56,7 +56,7 @@ class ProfileController extends Controller
                 unlink(public_path('upload/images/' . $user->image));
             }
             $file = $request->file('image');
-            $extension = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
             $safeUsername = Str::slug($user->name);
             $filename = 'img-' . $safeUsername. '-' . time() . $extension;
             $file->move('upload/images/', $filename);
