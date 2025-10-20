@@ -69,7 +69,7 @@
                     <div class="grid row" style="position: relative; height: 941.5px;">
                         @foreach($products->take(8) as $product)
                         <!-- single product -->
-                        <div class=" grid-item two col-6 col-md-6  col-lg-4 col-xl-3"
+                        <div class="grid-item two col-12 col-md-6  col-lg-4 col-xl-3"
                             style="position: absolute; left: 0px; top: 0px;">
                             <div class="sin-product style-one">
                                 <div class="pro-img">
@@ -81,14 +81,16 @@
                                 </div>
 
                                 <div class="pro-icon">
-                                    <ul>
-                                        <li>
-                                            <a class="trigger" href="#" data-id="{{ $product->id }}" title="Quick View"
-                                                role="button">
-                                                Quick View
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    <div class="pro-icon">
+                                        <ul>
+                                            <li>
+                                                <a class="trigger" href="#" data-id="{{ $product->id }}"
+                                                    title="Quick View" role="button">
+                                                    Quick View
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
