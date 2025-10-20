@@ -80,12 +80,15 @@
                                     <span>$60.00</span>
                                 </div>
 
-                                <div class="pro-icon">
-                                    <ul>
-                                        <a class="trigger" href="#" data-id="{{ $product->id }}" title="Quick View" role="button">
-                                            Quick View
-                                        </a>
-                                    </ul>
+                                <div class="icon-wrapper">
+                                    <div class="pro-icon">
+                                        <ul>
+                                            <a class="trigger" href="#" data-id="{{ $product->id }}" title="Quick View"
+                                                role="button">
+                                                Quick View
+                                            </a>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
