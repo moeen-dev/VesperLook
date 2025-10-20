@@ -30,7 +30,8 @@
             <div class="sin-category">
                 <img src="{{ url('upload/images', $subCategory->image ) }}" alt="">
                 <div class="cat-name">
-                    <a href="{{ route('collection.show', ['categorySlug' => $subCategory->category->slug, 'subcategorySlug' => $subCategory->slug]) }}">
+                    <a
+                        href="{{ route('collection.show', ['categorySlug' => $subCategory->category->slug, 'subcategorySlug' => $subCategory->slug]) }}">
                         <h5>{{ $subCategory->subcategory_name }}</h5>
                         <h5>Colle<span>ction</span></h5>
                     </a>
@@ -49,91 +50,53 @@
 <!--=========================-->
 
 @if($products->count() > 0 )
-<section class="shop-area">
-    <div class="container-fluid custom-container">
+<section class="main-product">
+    <div class="container container-two">
         <div class="section-heading">
             <h3>Welcome to <span>product</span></h3>
         </div>
         <!-- /.section-heading-->
         <div class="row">
             <div class="col-xl-12 ">
-                <div class="grid row">
-                    @foreach ($products->take(8) as $product)
-                    <div class="grid-item three col-12 col-md-6  col-lg-4 col-xl-3">
-                        <div class="sin-product style-two">
-                            <div class="pro-img">
-                                <img src="{{ url('upload/images', $product->image1) }}" alt="{{ $product->title }}">
-                            </div>
-                            <div>
-                                @if ($product->is_new && $product->created_at->diffInDays(now()) <= 10)
-                                    <span class="new-tag">NEW!</span>
-                                    @endif
-                            </div>
-                            <?php
-                            $category = \App\Models\Category::all();
-                            ?>
-                            <div class="mid-wrapper">
-                                <h5 class="pro-title"><a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}">{{ $product->title }}</a></h5>
-                                <div class="color-variation">
-                                    <ul>
-                                        @if (!empty($product->colors) && is_array($product->colors))
-                                        @foreach ($product->colors as $color)
-                                        @if (!empty($color))
-                                        <li><i class="fas fa-circle" style="color: <?= $color; ?>;"></i></li>
-                                        @endif
-                                        @endforeach
-                                        @endif
-                                    </ul>
+                <div class="pro-tab-filter">
+                    <ul class="pro-tab-button">
+                        <li class="filter active" data-filter="*">ALL</li>
+                        <li class="filter" data-filter=".two">Accessories</li>
+                        <li class="filter" data-filter=".three">Men's clothing</li>
+                        <li class="filter" data-filter=".four">Kids clothing</li>
+                        <li class="filter" data-filter=".five">Women dresses</li>
+                    </ul>
+                    <div class="grid row" style="position: relative; height: 941.5px;">
+                        @foreach($products->take(8) as $product)
+                        <!-- single product -->
+                        <div class=" grid-item two col-6 col-md-6  col-lg-4 col-xl-3"
+                            style="position: absolute; left: 0px; top: 0px;">
+                            <div class="sin-product style-one">
+                                <div class="pro-img">
+                                    <img src="{{ url('upload/images', $product->image1) }}" alt="{{ $product->title }}">
                                 </div>
-                                <p class="d-flex justify-content-between mt-3">
-                                    <span class="fw-bold"><strong>Price:</strong> $ {{ $product->price }}</span>
-
-                                    @if($product->quantity > 0)
-                                    <span class="badge bg-secondary ms-2 small text-white ml-5">In Stock</span>
-                                    @else
-                                    <span class="badge bg-danger ms-2 small text-white ml-3">Out of Stock</span>
-                                    @endif
-                                </p>
-
-                                @if($product->quantity > 0)
-                                <div>
-                                    <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}" class="btn-two w-100">Buy Now</a>
+                                <div class="mid-wrapper">
+                                    <h5 class="pro-title"><a href="product.html">Embellished print dress</a></h5>
+                                    <span>$60.00</span>
                                 </div>
-                                @else
-                                <div>
-                                    <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}" class="btn-two disabled w-100">Buy Now</a>
-                                </div>
-                                @endif
 
-                            </div>
-                            <div class="icon-wrapper">
                                 <div class="pro-icon">
                                     <ul>
-                                        {{-- <li>
-                                            <a href="#"><i class="flaticon-valentines-heart"></i></a>
-                                        </li> --}}
-                                        <li>
-                                            <a class="trigger" href="#" data-id="{{ $product->id }}" title="Quick View" role="button">
-                                                {{-- <i class="flaticon-eye"></i> --}}Quick View
-                                            </a>
-                                        </li>
+                                        <li><a href="#"><i class="flaticon-valentines-heart"></i></a></li>
+                                        <li><a href="#"><i class="flaticon-shopping-cart"></i></a></li>
+                                        <li><a class="trigger" href="#"><i class="flaticon-zoom-in"></i></a></li>
                                     </ul>
-                                </div>
-                                <div class="add-to-cart">
-                                    <!-- <a href="{{ route('cart.add', ['id' => $product->id, 'quantity' => 1]) }}">add to cart</a> -->
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
-
             </div>
         </div>
+        <!-- Row End -->
     </div>
-    <!-- Row End -->
-    </div>
-    <!-- Container -->
+    <!-- Container  -->
 </section>
 @endif
 <!-- main-product -->
@@ -235,7 +198,9 @@
                                 <span class="new-tag">{{ $daysAgo >= 1 ? $daysAgo . ' days ago' : 'Now' }}</span>
                             </div>
                             <div class="mid-wrapper">
-                                <h5 class="pro-title"><a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}">{{ $product->title }}</a></h5>
+                                <h5 class="pro-title"><a
+                                        href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}">{{
+                                        $product->title }}</a></h5>
                                 <div class="color-variation">
                                     <ul>
                                         @if (!empty($product->colors) && is_array($product->colors))
@@ -259,11 +224,13 @@
 
                                 @if($product->quantity > 0)
                                 <div>
-                                    <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}" class="btn-two w-100">Buy Now</a>
+                                    <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}"
+                                        class="btn-two w-100">Buy Now</a>
                                 </div>
                                 @else
                                 <div>
-                                    <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}" class="btn-two disabled w-100">Buy Now</a>
+                                    <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}"
+                                        class="btn-two disabled w-100">Buy Now</a>
                                 </div>
                                 @endif
 
@@ -273,7 +240,8 @@
                                     <ul>
                                         {{-- <li><a href="#"><i class="flaticon-valentines-heart"></i></a></li> --}}
                                         <li>
-                                            <a class="trigger" href="#" data-id="{{ $product->id }}" title="Quick View" role="button">
+                                            <a class="trigger" href="#" data-id="{{ $product->id }}" title="Quick View"
+                                                role="button">
                                                 {{-- <i class="flaticon-eye"></i> --}}Quick View
                                             </a>
                                         </li>
