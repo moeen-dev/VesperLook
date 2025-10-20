@@ -82,9 +82,12 @@
 
                                 <div class="pro-icon">
                                     <ul>
-                                        <a class="trigger" href="#" data-id="{{ $product->id }}" title="Quick View" role="button">
-                                            Quick View
-                                        </a>
+                                        <li>
+                                            <a class="trigger" href="#" data-id="{{ $product->id }}" title="Quick View"
+                                                role="button">
+                                                Quick View
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
