@@ -58,7 +58,7 @@ class ProfileController extends Controller
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $safeUsername = Str::slug($user->name);
-            $filename = 'img-' . $safeUsername. '-' . time() . $extension;
+            $filename = 'img-' . $safeUsername. '-' . time() . '.' . $extension;
             $file->move('upload/images/', $filename);
             $input['image'] = $filename;
         }
