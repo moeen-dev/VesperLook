@@ -40,10 +40,7 @@ class ProfileController extends Controller
         ]);
 
         // Update basic info
-        $user->name = $request->name ?? $user->name;
-        $user->email = $request->email ?? $user->email;
-        $user->shipping_address = $request->shipping_address ?? $user->shipping_address;
-        $user->billing_address = $request->billing_address ?? $user->billing_address;
+        $input = $request->all();
 
         // Update password if provided
         if ($request->filled('password')) {
@@ -63,7 +60,7 @@ class ProfileController extends Controller
             $input['image'] = $filename;
         }
 
-        $user->update(); 
+        $user->update($input); 
 
         return redirect()->route('user.profile')->with('success', 'Profile updated successfully!');
     }
