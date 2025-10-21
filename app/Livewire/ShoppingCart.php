@@ -269,7 +269,9 @@ class ShoppingCart extends Component
         // session()->flash('success', 'Order placed successfully!');
 
         $pdf = Pdf::loadView('frontend.order.invoice', ['order' => $order])
-            ->setPaper([0, 0, 700, 900]);
+            ->setPaper([0, 0, 700, 900])
+            ->setOption('isHtml5ParserEnabled', true)
+            ->setOption('isRemoteEnabled', true);
 
         $filename = 'invoice-order-' . $order->id . '-' . Str::random(5) . '.pdf';
 
