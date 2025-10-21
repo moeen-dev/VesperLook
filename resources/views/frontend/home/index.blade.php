@@ -133,7 +133,7 @@
                     </div>
                     <!-- /.tab-content -->
                     <div class="load-more-wrapper">
-                        <a href="{{ route('shop') }}" class="btn-two">Go to Shop</a>
+                        <a href="{{ route('shop') }}" class="btn-two" style="{{ $product->count() <= 8 ? 'display: none;"' : '' }}">Go to Shop</a>
                     </div>
                     <!-- /.load-more-wrapper -->
                 </div>
