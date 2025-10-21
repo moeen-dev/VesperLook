@@ -23,6 +23,21 @@ Route::get('/product/quick-view/{id}', [App\Http\Controllers\Frontend\ModalContr
 Route::get('/contact-us', [App\Http\Controllers\Frontend\ContactController::class, 'index'])->name('contact');
 Route::post('/contact-us/submitting', [App\Http\Controllers\Frontend\ContactController::class, 'contactSubmit'])->name('contact.submit');
 
+// Controller for Frontend About us
+Route::get('/about-us', [App\Http\Controllers\Frontend\VendorController::class, 'about'])->name('about');
+
+// Controller for Frontend Privacy Policy Frontend
+Route::get('/privacy-policy', [App\Http\Controllers\Frontend\VendorController::class, 'privacyPolicy'])->name('frontend.privacy');
+
+// Controller for Frontend Order & Returns
+Route::get('/order-return-policy', [App\Http\Controllers\Frontend\VendorController::class, 'orderReturn'])->name('frontend.order.return');
+
+// Controller for Frontend Payment Policy
+Route::get('/payment-policy', [App\Http\Controllers\Frontend\VendorController::class, 'paymentPolicy'])->name('frontend.payment.policy');
+// Controller for Frontend FAQs
+// Route::get('/frequently-asked-questions', [App\Http\Controllers\Frontend\VendorController::class, 'faq'])->name('frontend.faq');
+
+
 // Controller for Newsletter 
 Route::post('/newsletter/subscribe', [App\Http\Controllers\Frontend\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::post('/newsletter/hide-popup', [App\Http\Controllers\Frontend\NewsletterController::class, 'hidePopup'])->name('newsletter.hidePopup');
@@ -106,13 +121,28 @@ Route::prefix('administration')->group(function () {
             // For general setting
             Route::get('/general-setting', [App\Http\Controllers\Backend\GeneralSettingController::class, 'generalSettingIndex'])->name('general.index');
             Route::post('/general-setting/update', [App\Http\Controllers\Backend\GeneralSettingController::class, 'generalSettingUpdate'])->name('general.edit');
-            
+
             // For settings for seo setting
             Route::resource('/seo', App\Http\Controllers\Backend\SeoSettingController::class);
 
             // For About shop page
             Route::get('/about', [App\Http\Controllers\Backend\AboutController::class, 'aboutIndex'])->name('about.index');
             Route::post('/about/update', [App\Http\Controllers\Backend\AboutController::class, 'aboutUpdate'])->name('about.update');
+
+            // For Order Return page
+            Route::get('/order-return-policy', [App\Http\Controllers\Backend\OrderReturnController::class, 'orderReturnIndex'])->name('order.return.policy');
+            Route::post('/order-return-policy/update', [App\Http\Controllers\Backend\OrderReturnController::class, 'orderReturnUpdate'])->name('return.policy.update');
+
+            // For Privacy Policy
+            Route::get('/privacy-policy', [App\Http\Controllers\Backend\PrivacyController::class, 'privacyPolicyIndex'])->name('privacy.policy');
+            Route::post('/privacy-policy/update', [App\Http\Controllers\Backend\PrivacyController::class, 'privacyPolicyUpdate'])->name('privacy.policy.update');
+
+            // For Payment Policy
+            Route::get('/payment-policy', [App\Http\Controllers\Backend\PaymentPolicyController::class, 'paymentPolicyIndex'])->name('payment.policy');
+            Route::post('/payment-policy/update', [App\Http\Controllers\Backend\PaymentPolicyController::class, 'paymentPolicyUpdate'])->name('payment.policy.update');
+
+            // For Frequently Asked Question's
+            Route::resource('/faq', App\Http\Controllers\Backend\FaqController::class);
         });
     });
 });
