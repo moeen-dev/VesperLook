@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Category;
 use App\Models\SubCategory;
-use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CollectionController extends Controller
@@ -30,29 +30,31 @@ class CollectionController extends Controller
         $query = $subcategory->products();
 
         // Apply sorting if a sort parameter exists
-            if ($request->has('sort')) {
-                switch ($request->sort) {
-                    case 'low_to_high':
-                        $query->orderBy('price', 'ASC');
-                        break;
-                    case 'high_to_low':
-                        $query->orderBy('price', 'DESC');
-                        break;
-                    case 'latest':
-                        $query->orderBy('created_at', 'DESC');
-                        break;
-                    case 'oldest':
-                        $query->orderBy('created_at', 'ASC');
-                        break;
-                    default:
-                        $query->orderBy('id', 'DESC');
-                        break;
-                }
-            } else {
-                $query->orderBy('id', 'DESC');
+        if ($request->has('sort')) {
+            switch ($request->sort) {
+                case 'low_to_high':
+                    $query->orderBy('price', 'ASC');
+                    break;
+                case 'high_to_low':
+                    $query->orderBy('price', 'DESC');
+                    break;
+                case 'latest':
+                    $query->orderBy('created_at', 'DESC');
+                    break;
+                case 'oldest':
+                    $query->orderBy('created_at', 'ASC');
+                    break;
+                default:
+                    $query->orderBy('id', 'DESC');
+                    break;
             }
+        } else {
+            $query->orderBy('id', 'DESC');
+        }
 
         $products = $query->paginate(9);
+
+        $seo = getSeo('collection', $subcategory->id);
 
         $bestSellers = Product::with(['category', 'subcategory'])
             ->withAvg('reviews', 'rating')
@@ -60,8 +62,6 @@ class CollectionController extends Controller
             ->take(4)
             ->get();
 
-        $seo = getSeo('collection', $subcategory->id);
-        
-        return view('frontend.shop.index', compact('category', 'subcategory', 'products', 'subCategories', 'bestSellers', 'seo'));
+        return view('frontend.shop.index', compact('category', 'subcategory', 'products', 'subCategories', 'seo', 'bestSellers'));
     }
 }

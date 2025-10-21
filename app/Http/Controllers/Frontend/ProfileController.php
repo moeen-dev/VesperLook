@@ -6,8 +6,6 @@ use App\Models\Order;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -41,13 +39,14 @@ class ProfileController extends Controller
         ]);
 
         // Update basic info
-        $input = $request->all();
+        $user->name = $request->name ?? $user->name;
+        $user->email = $request->email ?? $user->email;
+        $user->shipping_address = $request->shipping_address ?? $user->shipping_address;
+        $user->billing_address = $request->billing_address ?? $user->billing_address;
 
         // Update password if provided
         if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
-        } else {
-            unset($input['password']);
+            $user->password = bcrypt($request->password);
         }
 
         // Update profile image if uploaded
@@ -56,14 +55,12 @@ class ProfileController extends Controller
                 unlink(public_path('upload/images/' . $user->image));
             }
             $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $safeUsername = Str::slug($user->name);
-            $filename = 'img-' . $safeUsername . '-' . time() . '.' . $extension;
-            $file->move('upload/images/', $filename);
-            $input['image'] = $filename;
+            $filename = time() . '-image-' . $file->getClientOriginalName();
+            $file->move(public_path('upload/images/'), $filename);
+            $user->image = $filename; // << Assign to user
         }
 
-        $user->update($input);
+        $user->save(); 
 
         return redirect()->route('user.profile')->with('success', 'Profile updated successfully!');
     }

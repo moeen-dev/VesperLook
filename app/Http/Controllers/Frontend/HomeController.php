@@ -15,14 +15,8 @@ class HomeController extends Controller
         $subCategories = SubCategory::inRandomOrder()->get();
         $products = Product::with('subCategory')->orderBy('created_at', 'desc')->get();
 
-        $bestSellers = Product::with(['category', 'subcategory'])
-            ->withAvg('reviews', 'rating')
-            ->orderByDesc('reviews_avg_rating')
-            ->take(8)
-            ->get();
-
         $seo = getSeo('home');
 
-        return view('frontend.home.index', compact('banners', 'subCategories', 'products', 'bestSellers', 'seo'));
+        return view('frontend.home.index', compact('banners', 'subCategories', 'products', 'seo'));
     }
 }
