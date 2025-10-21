@@ -58,19 +58,23 @@
                         <div class="wid-pro">
                             <div class="sp-img">
                                 <img style="width: 100px; height:auto;"
-                                    src="{{ url('upload/images', $bestSeller->image2) }}" alt="{{ $bestSeller->title }}">
+                                    src="{{ url('upload/images', $bestSeller->image2) }}"
+                                    alt="{{ $bestSeller->title }}">
                             </div>
                             <div class="small-pro-details">
-                                <h5 class="title"><a href="{{ route('shop.details', ['categorySlug' => $bestSeller->subCategory->category->slug, 'subcategorySlug' => $bestSeller->subCategory->slug, 'productSlug' => $bestSeller->slug]) }}">{{ $bestSeller->title ?? 'No Title Here!'}}</a></h5>
+                                <h5 class="title"><a
+                                        href="{{ route('shop.details', ['categorySlug' => $bestSeller->subCategory->category->slug, 'subcategorySlug' => $bestSeller->subCategory->slug, 'productSlug' => $bestSeller->slug]) }}">{{
+                                        $bestSeller->title ?? 'No Title Here!'}}</a></h5>
                                 <span>{{ $bestSeller->price ?? 0 }}</span>
                                 {{-- <span class="pre-price">${{ $bestSeller->price ?? 0 }}</span> --}}
                                 <div class="rating">
                                     <ul>
-                                       @php
+                                        @php
                                         // Round average rating to nearest integer or floor it if you prefer
                                         $rating = round($bestSeller->reviews_avg_rating ?? 0);
                                         @endphp
-                                        @for ($i = 1; $i <= 5; $i++) @if ($i <=$rating) <li><a><i class="fas fa-star"></i></a></li> {{-- filled star --}}
+                                        @for ($i = 1; $i <= 5; $i++) @if ($i <=$rating) <li><a><i
+                                                    class="fas fa-star"></i></a></li> {{-- filled star --}}
                                             @else
                                             <li><a><i class="far fa-star"></i></a></li> {{-- empty star --}}
                                             @endif
@@ -170,42 +174,50 @@
                             <div class="row">
                                 @foreach($products as $product)
                                 <div class="col-sm-6 col-xl-4">
-                                    <div class="sin-product style-two">
+                                    <div class="sin-product style-two {{ $product->quantity <= 0 ? 'muted' : '' }}">
                                         <div class="pro-img">
                                             <img src="{{ url('upload/images', $product->image1) }}"
                                                 alt="{{ $product->title }}">
                                         </div>
-                                        <div>
-                                            @if ($product->is_new && $product->created_at->diffInDays(now()) <= 10)
-                                                <span class="new-tag">NEW!</span>
-                                                @endif
-                                        </div>
-                                        <div class="mid-wrapper">
-                                            <h5 class="pro-title"><a
-                                                    href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}">{{
-                                                    $product->title }}</a></h5>
-                                            <div class="color-variation">
-                                                <ul>
-                                                    @if (!empty($product->colors) && is_array($product->colors))
-                                                    @foreach ($product->colors as $color)
-                                                    @if (!empty($color))
-                                                    <li><i class="fas fa-circle" style="color: <?= $color; ?>;"></i>
-                                                    </li>
-                                                    @endif
-                                                    @endforeach
-                                                    @endif
-                                                </ul>
+                                        @if ($product->is_new && $product->created_at->diffInDays(now()) <= 10) <span
+                                            class="new-tag">NEW!</span>
+                                            @endif
+                                            @if($product->quantity > 0)
+                                            <span class="is-stock">In Stock</span>
+                                            @else
+                                            <span class="is-out-stock">Out of Stock</span>
+                                            @endif
+                                            <div class="mid-wrapper">
+                                                <h5 class="pro-title"><a
+                                                        href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}">{{
+                                                        $product->title }}</a></h5>
+                                                <div class="color-variation">
+                                                    <ul>
+                                                        @if (!empty($product->colors) && is_array($product->colors))
+                                                        @foreach ($product->colors as $color)
+                                                        @if (!empty($color))
+                                                        <li><i class="fas fa-circle" style="color: <?= $color; ?>;"></i>
+                                                        </li>
+                                                        @endif
+                                                        @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </div>
+                                                <p>{{ $product->subCategory->subcategory_name }} / <span><strong>Price:
+                                                        </strong>$ {{ $product->price }}</span></p>
                                             </div>
-                                            <p class="d-flex justify-content-between mt-3">
-                                                <span><strong>Price:</strong> ${{ $product->price }}</span>
-                                                @if($product->quantity > 0)
-                                                <span class="badge bg-secondary ms-2 small text-white ml-5">In
-                                                    Stock</span>
-                                                @else
-                                                <span class="badge bg-danger ms-2 small text-white ml-3">Out of
-                                                    Stock</span>
-                                                @endif
-                                            </p>
+                                            <div class="icon-wrapper">
+                                                <div class="pro-icon">
+                                                    <ul>
+                                                        <li>
+                                                            <a class="trigger" href="#" data-id="{{ $product->id }}"
+                                                                title="Quick View" role="button">
+                                                                Quick View
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                             @if($product->quantity > 0)
                                             <div>
                                                 <a href="{{ route('shop.details', ['categorySlug' => $product->subCategory->category->slug, 'subcategorySlug' => $product->subCategory->slug, 'productSlug' => $product->slug]) }}"
@@ -217,24 +229,7 @@
                                                     class="btn-two disabled w-100">Buy Now</a>
                                             </div>
                                             @endif
-                                        </div>
-                                        <div class="icon-wrapper">
-                                            <div class="pro-icon">
-                                                <ul>
-                                                    {{-- <li><a href="#"><i class="flaticon-valentines-heart"></i></a>
-                                                    </li> --}}
-                                                    <li>
-                                                        <a class="trigger" href="#" data-id="{{ $product->id }}"
-                                                            title="Quick View" role="button">
-                                                            {{-- <i class="flaticon-eye"></i> --}}Quick View
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="add-to-cart">
-                                                <!-- <a href="#">add to cart</a> -->
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <!-- /.sin-product -->
                                 </div>
@@ -248,7 +243,7 @@
                             <div class="row no-gutters">
                                 <div class="col-xl-12">
                                     @foreach($products as $product)
-                                    <div class="sin-product list-pro">
+                                    <div class="sin-product list-pro {{ $product->quantity <= 0 ? 'muted' : '' }}">
                                         <div class="row">
                                             <div class="col-md-5 col-lg-6 col-xl-4">
                                                 <div class="pro-img">
@@ -290,16 +285,28 @@
                                                             Stock</span>
                                                         @endif
                                                     </h5>
-                                                    <span>$387</span>
-                                                    <!-- <div class="rating">
+                                                    <span><strong>Price: </strong>$387</span>
+                                                    <div class="rating">
                                                         <ul>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                                                            @php
+                                                            $rating = round($bestSeller->reviews_avg_rating ?? 0);
+                                                            @endphp
+
+                                                            @if ($rating > 0)
+                                                            <ul>
+                                                                @for ($i = 1; $i <= 5; $i++) @if ($i <=$rating) <li>
+                                                                    <a><i class="fas fa-star"></i></a></li>
+                                                                    @else
+                                                                    <li><a><i class="far fa-star"></i></a>
+                                                                    </li>
+                                                                    @endif
+                                                                    @endfor
+                                                            </ul>
+                                                            @else
+                                                            <p>No Reviews Found!</p>
+                                                            @endif
                                                         </ul>
-                                                    </div> -->
+                                                    </div>
                                                     <div class="color-variation">
                                                         <ul>
                                                             @if (!empty($product->colors) && is_array($product->colors))

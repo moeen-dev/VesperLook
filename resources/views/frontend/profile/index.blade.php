@@ -31,7 +31,7 @@ $user = Auth::guard('user')->user();
                 <div class="account-details">
                     @if($user->image)
                     <img
-                        src="{{ url('upload/images', $user->image) }}"
+                        src="{{ url('upload/images/' . $user->image) }}"
                         class="rounded-circle border border-secondary shadow"
                         style="width: 100px; height: 100px; object-fit: cover;">
                     @endif
