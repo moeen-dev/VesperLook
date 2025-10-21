@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CollectionController extends Controller
@@ -53,8 +54,14 @@ class CollectionController extends Controller
 
         $products = $query->paginate(9);
 
+        $bestSellers = Product::with(['category', 'subcategory'])
+            ->withAvg('reviews', 'rating')
+            ->orderByDesc('reviews_avg_rating')
+            ->take(4)
+            ->get();
+
         $seo = getSeo('collection', $subcategory->id);
         
-        return view('frontend.shop.index', compact('category', 'subcategory', 'products', 'subCategories', 'seo'));
+        return view('frontend.shop.index', compact('category', 'subcategory', 'products', 'subCategories', 'bestSellers', 'seo'));
     }
 }
