@@ -269,19 +269,17 @@ class ShoppingCart extends Component
         // session()->flash('success', 'Order placed successfully!');
 
         $pdf = Pdf::loadView('frontend.order.invoice', ['order' => $order])
-            ->setPaper([0, 0, 700, 900])
-            ->setOption('isHtml5ParserEnabled', true)
-            ->setOption('isRemoteEnabled', true);
+            ->setPaper([0, 0, 700, 900]);
 
         $filename = 'invoice-order-' . $order->id . '-' . Str::random(5) . '.pdf';
 
-        $directoryPath = storage_path('app/private/invoices');
-        if (!file_exists($directoryPath)) {
-            mkdir($directoryPath, 0755, true);
-        }
-        $path = $directoryPath . '/' . $filename;
-        file_put_contents($path, $pdf->output());
+        $path = 'private/invoices/' . $filename;
 
+        if (!Storage::exists('private/invoices')) {
+            Storage::makeDirectory('private/invoices');
+        }
+
+        Storage::put($path, $pdf->output());
 
         Mail::to($order->email)->send(new OrderConfirmationMail($order, $path));
 

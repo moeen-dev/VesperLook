@@ -296,11 +296,6 @@ return [
          * @var bool
          */
         'enable_html5_parser' => true,
-
-        'default_font' => 'SolaimanLipi',
-        'font_dir' => public_path('fonts/'),
-        'font_cache' => storage_path('fonts/'),
-
     ],
 
 ];
