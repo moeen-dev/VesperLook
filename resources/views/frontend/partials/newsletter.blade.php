@@ -23,27 +23,27 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        $('#exampleModalCenter').modal('show');
+    document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("exampleModalCenter");
+    const closeBtn = document.getElementById("popupCloseBtn");
+    const checkbox = document.getElementById("dontShowPopup");
 
-        // Close (×) button sets 5-min cookie and hides modal
-        $('#popupCloseBtn').click(function() {
-            $.post("{{ route('newsletter.hidePopup') }}", {
-                _token: '{{ csrf_token() }}'
-            }).done(function() {
-                $('#exampleModalCenter').modal('hide');
+    if (!document.cookie.includes("hide_newsletter_popup")) {
+        $(modal).modal("show");
+    }
+
+    closeBtn.addEventListener("click", () => {
+        if (checkbox.checked) {
+            fetch("{{ route('newsletter.hidePopup') }}", {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    "Content-Type": "application/json"
+                },
+                body: "{}"
             });
-        });
-
-        // If "Don't show this again" is checked, also set cookie
-        $('#dontShowPopup').change(function() {
-            if ($(this).is(':checked')) {
-                $.post("{{ route('newsletter.hidePopup') }}", {
-                    _token: '{{ csrf_token() }}'
-                }).done(function() {
-                    $('#exampleModalCenter').modal('hide');
-                });
-            }
-        });
+        }
+        $(modal).modal("hide");
     });
+});
 </script>

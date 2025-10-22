@@ -21,8 +21,7 @@ class NewsletterController extends Controller
         $ip = $request->ip();
 
         // Check if this email is already subscribed
-        $existingEmail = NewsletterSubscriber::where('email', $email)->first();
-        if ($existingEmail) {
+        if (NewsletterSubscriber::where('email', $email)->exists()) {
             return back()->with('error', 'This email is already subscribed.');
         }
 
@@ -30,12 +29,11 @@ class NewsletterController extends Controller
         $oneWeekAgo = Carbon::now()->subDays(7);
         $existingIp = NewsletterSubscriber::where('ip_address', $ip)
             ->where('created_at', '>=', $oneWeekAgo)
-            ->first();
+            ->exists();
 
         if ($existingIp) {
             return back()->with('error', 'Subscription limit reached for this IP. Try again after a week.');
         }
-
         // Create new subscriber
         $subscriber = NewsletterSubscriber::create([
             'email' => $email,
@@ -53,8 +51,8 @@ class NewsletterController extends Controller
 
     public function hidePopup(Request $request)
     {
-        // Set cookie for 5 minutes
-        $cookie = cookie('hide_newsletter_popup', true, 1);
+        // Set cookie for 60 minutes
+        $cookie = cookie('hide_newsletter_popup', true, 60);
         return response()->json(['status' => 'ok'])->cookie($cookie);
     }
 }
