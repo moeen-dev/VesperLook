@@ -27,13 +27,13 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="top-bar-left">
-                                <p><i class="fas fa-phone"></i><a
-                                        href="tel:{{ $genSetting->phone_number ?? '' }}">{{ $genSetting->phone_number ?? 'Not Available' }}</a>
+                                <p><i class="fas fa-phone"></i><a href="tel:{{ $genSetting->phone_number ?? '' }}">{{
+                                        $genSetting->phone_number ?? 'Not Available' }}</a>
                                 </p>
 
                                 <p><i class="far fa-envelope"></i>
-                                    <a
-                                        href="mailto:{{ $genSetting->email ?? '' }}">{{ $genSetting->email ?? 'Not Available' }}</a>
+                                    <a href="mailto:{{ $genSetting->email ?? '' }}">{{ $genSetting->email ?? 'Not
+                                        Available' }}</a>
                                 </p>
                             </div>
                         </div>
@@ -43,31 +43,31 @@
                                 <div class="social">
                                     <ul>
                                         @if (!empty($genSetting) && $genSetting->facebook_url)
-                                            <li><a href="{{ $genSetting->facebook_url }}"><i class="fab fa-facebook-f"
-                                                        target="_blank"></i></a></li>
+                                        <li><a href="{{ $genSetting->facebook_url }}"><i class="fab fa-facebook-f"
+                                                    target="_blank"></i></a></li>
                                         @endif
                                         @if (!empty($genSetting) && $genSetting->pinterest_url)
-                                            <li><a href="{{ $genSetting->pinterest_url }}"><i class="fab fa-pinterest-p"
-                                                        target="_blank"></i></a></li>
+                                        <li><a href="{{ $genSetting->pinterest_url }}"><i class="fab fa-pinterest-p"
+                                                    target="_blank"></i></a></li>
                                         @endif
                                         @if (!empty($genSetting) && $genSetting->instagram_url)
-                                            <li><a href="{{ $genSetting->instagram_url }}"><i class="fab fa-instagram"
-                                                        target="_blank"></i></a></li>
+                                        <li><a href="{{ $genSetting->instagram_url }}"><i class="fab fa-instagram"
+                                                    target="_blank"></i></a></li>
                                         @endif
                                         @if (!empty($genSetting) && $genSetting->linkedin_url)
-                                            <li><a href="{{ $genSetting->linkedin_url }}"><i class="fab fa-linkedin-in"
-                                                        target="_blank"></i></a></li>
+                                        <li><a href="{{ $genSetting->linkedin_url }}"><i class="fab fa-linkedin-in"
+                                                    target="_blank"></i></a></li>
                                         @endif
                                     </ul>
                                 </div>
                                 @if (Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
-                                    @if (Route::is('user.profile'))
-                                        <a href="{{ route('user.logout') }}" class="my-account">Sign Out</a>
-                                    @else
-                                        <a href="{{ route('user.profile') }}" class="my-account">My Account</a>
-                                    @endif
+                                @if (Route::is('user.profile'))
+                                <a href="{{ route('user.logout') }}" class="my-account">Sign Out</a>
                                 @else
-                                    <a href="{{ route('user.login') }}" class="my-account">Sign In</a>
+                                <a href="{{ route('user.profile') }}" class="my-account">My Account</a>
+                                @endif
+                                @else
+                                <a href="{{ route('user.login') }}" class="my-account">Sign In</a>
                                 @endif
                             </div>
                             <!--top-bar-right end-->
@@ -115,16 +115,17 @@
                                 <li class="has-child"><a style="cursor: pointer;">Category</a>
                                     <div class="mega-menu">
                                         @foreach ($navbarCategories as $category)
-                                            <div class="mega-catagory per-25">
-                                                <h4><a class="font-red">{{ $category->category_name }}</a></h4>
-                                                <ul class="mega-button">
-                                                    @foreach ($category->subcategories as $subcategory)
-                                                        <li><a
-                                                                href="{{ route('collection.show', ['categorySlug' => $category->slug, 'subcategorySlug' => $subcategory->slug]) }}">{{ $subcategory->subcategory_name }}</a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
+                                        <div class="mega-catagory per-25">
+                                            <h4><a class="font-red">{{ $category->category_name }}</a></h4>
+                                            <ul class="mega-button">
+                                                @foreach ($category->subcategories as $subcategory)
+                                                <li><a
+                                                        href="{{ route('collection.show', ['categorySlug' => $category->slug, 'subcategorySlug' => $subcategory->slug]) }}">{{
+                                                        $subcategory->subcategory_name }}</a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                         @endforeach
                                     </div>
                                 </li>
@@ -165,21 +166,20 @@
                                 </li>
 
                                 @if (Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
-                                    @if (Route::is('user.profile'))
-                                        <li><a href="{{ route('user.logout') }}"><i
-                                                    class="fi fi-rs-user-logout"></i></a></li>
-                                    @else
-                                        <li><a href="{{ route('user.profile') }}"><i class="fi fi-rs-user"></i></a>
-                                        </li>
-                                    @endif
-                                    <li class="top-cart"><a href="{{ route('cart.index') }}"><i
-                                                class="fi fi-rs-shopping-bag"></i><span>{{ $cart->count() }}</span></a>
-                                    </li>
+                                @if (Route::is('user.profile'))
+                                <li><a href="{{ route('user.logout') }}"><i class="fi fi-rs-user-logout"></i></a></li>
                                 @else
-                                    <li><a href="{{ route('user.login') }}"><i class="fi fi-rs-login"></i></a></li>
-                                    <li class="top-cart"><a href="{{ route('user.login', ['redirect' => 'cart']) }}"><i
-                                                class="fi fi-rs-shopping-bag"></i><span>{{ $cart->count() }}</span></a>
-                                    </li>
+                                <li><a href="{{ route('user.profile') }}"><i class="fi fi-rs-user"></i></a>
+                                </li>
+                                @endif
+                                <li class="top-cart"><a href="{{ route('cart.index') }}"><i
+                                            class="fi fi-rs-shopping-bag"></i><span>{{ $cart->count() }}</span></a>
+                                </li>
+                                @else
+                                <li><a href="{{ route('user.login') }}"><i class="fi fi-rs-login"></i></a></li>
+                                <li class="top-cart"><a href="{{ route('user.login', ['redirect' => 'cart']) }}"><i
+                                            class="fi fi-rs-shopping-bag"></i><span>{{ $cart->count() }}</span></a>
+                                </li>
                                 @endif
 
                             </ul>
@@ -220,13 +220,12 @@
                     <div class="col-4">
                         <div class="top-cart">
                             @if (Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
-                                <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"
-                                        aria-hidden="true"></i>
-                                    ({{ $cart->count() }})</a>
+                            <a href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                ({{ $cart->count() }})</a>
                             @else
-                                <a href="{{ route('user.login', ['redirect' => 'cart']) }}"><i
-                                        class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                    ({{ $cart->count() }})</a>
+                            <a href="{{ route('user.login', ['redirect' => 'cart']) }}"><i class="fa fa-shopping-cart"
+                                    aria-hidden="true"></i>
+                                ({{ $cart->count() }})</a>
                             @endif
                         </div>
                     </div>
@@ -253,14 +252,15 @@
 
                     <li>
                         @foreach ($navbarCategories as $category)
-                            <a class="link">{{ $category->category_name }}<i class="fa fa-chevron-down"></i></a>
-                            <ul class="submenu">
-                                @foreach ($category->subcategories as $subcategory)
-                                    <li><a
-                                            href="{{ route('collection.show', ['categorySlug' => $category->slug, 'subcategorySlug' => $subcategory->slug]) }}">{{ $subcategory->subcategory_name }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
+                        <a class="link">{{ $category->category_name }}<i class="fa fa-chevron-down"></i></a>
+                        <ul class="submenu">
+                            @foreach ($category->subcategories as $subcategory)
+                            <li><a
+                                    href="{{ route('collection.show', ['categorySlug' => $category->slug, 'subcategorySlug' => $subcategory->slug]) }}">{{
+                                    $subcategory->subcategory_name }}</a>
+                            </li>
+                            @endforeach
+                        </ul>
                         @endforeach
                     </li>
 
@@ -272,11 +272,11 @@
                 </ul>
                 <div class="mobile-login">
                     @if (Auth::guard('user')->check() && Auth::guard('user')->user()->is_admin == 0)
-                        <a href="{{ route('user.profile') }}">View Profile</a> |
-                        <a href="{{ route('user.logout') }}">Sign Out</a>
+                    <a href="{{ route('user.profile') }}">View Profile</a> |
+                    <a href="{{ route('user.logout') }}">Sign Out</a>
                     @else
-                        <a href="{{ route('user.login') }}">Sign In</a> |
-                        <a href="{{ route('user.register') }}">Create Account</a>
+                    <a href="{{ route('user.login') }}">Sign In</a> |
+                    <a href="{{ route('user.register') }}">Create Account</a>
                     @endif
                 </div>
                 <form action="#" id="moble-search">
@@ -436,8 +436,7 @@
                             <h3>CUSTOMER SERVICES</h3>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="{{ route('frontend.privacy') }}"><i
-                                                class="fas fa-chevron-right"></i>
+                                    <li><a href="{{ route('frontend.privacy') }}"><i class="fas fa-chevron-right"></i>
                                             Privacy Policy</a></li>
                                     <li><a href="{{ route('frontend.order.return') }}"><i
                                                 class="fas fa-chevron-right"></i> Orders & Returns</a>
@@ -506,6 +505,11 @@
 
     </div>
     <!-- /#site -->
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKD4PSZD" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     @livewireScripts
 
