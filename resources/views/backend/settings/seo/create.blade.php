@@ -48,8 +48,8 @@
                                             <option value="contact" {{ old('page_type')=='contact' ? 'selected' : '' }}>
                                                 Contact</option>
 
-                                            <option value="orderandreturns" {{ old('page_type')=='orderandreturns'
-                                                ? 'selected' : '' }}>Order & Returns</option>
+                                            <option value="paymentpolicy" {{ old('page_type')=='paymentpolicy'
+                                                ? 'selected' : '' }}>Payment Policy</option>
 
                                             <option value="privacy" {{ old('page_type')=='privacy' ? 'selected' : '' }}>
                                                 Privacy Policy</option>

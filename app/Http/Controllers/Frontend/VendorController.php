@@ -16,7 +16,8 @@ class VendorController extends Controller
     public function about()
     {
         $about = About::first();
-        return view('frontend.vendors.about', compact('about'));
+        $seo = getSeo('aboutus');
+        return view('frontend.vendors.about', compact('about', 'seo'));
     }
 
     // To show Frequently Asked Question's
@@ -30,20 +31,23 @@ class VendorController extends Controller
     public function orderReturn()
     {
         $orderReturn = OrderReturn::first();
-        return view('frontend.vendors.order-return', compact('orderReturn'));
+        $seo = getSeo('orderandreturns');
+        return view('frontend.vendors.order-return', compact('orderReturn', 'seo'));
     }
 
     // To show Privacy Policy page
     public function privacyPolicy()
     {
         $privacyPolicy = PrivacyPolicy::first();
-        return view('frontend.vendors.privacy-policy', compact('privacyPolicy'));
+        $seo = getSeo('privacy');
+        return view('frontend.vendors.privacy-policy', compact('privacyPolicy', 'seo'));
     }
 
     // To show Payment Policy page
     public function paymentPolicy()
     {
         $paymentPolicy = PaymentPolicy::first();
-        return view('frontend.vendors.payment-policy', compact('paymentPolicy'));
+        $seo = getSeo('paymentpolicy');
+        return view('frontend.vendors.payment-policy', compact('paymentPolicy', 'seo'));
     }
 }
